@@ -41,7 +41,7 @@ class InfoItemW extends StatelessWidget {
           ),
           _titleAndSubtitle(
             icon: TennisAppIcons.circle_user_solid,
-            title: 'Reserva a:',
+            title: 'Reserva a nombre de:',
             subTitle: 'Bakke Medina',
           ),
         ],

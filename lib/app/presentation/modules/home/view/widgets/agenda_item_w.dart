@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../core/adaptative_screen/adaptative_screen.dart';
 
 import '../../../../../core/icons/tennis_app_icons.dart';
 import '../../../../global/extensions/widgets_ext.dart';
+import '../../../../router/routes/agenda_item_route.dart';
 import 'agenda_img_w.dart';
 
 class AgendaItemW extends StatelessWidget {
@@ -19,7 +21,7 @@ class AgendaItemW extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () => context.pushNamed(AgendaItemRoute.path),
       child: Hero(
         tag: index,
         child: Container(

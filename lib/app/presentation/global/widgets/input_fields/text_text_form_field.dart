@@ -150,6 +150,7 @@ InputDecoration _simpleInput(
     ),
     hintStyle: const TextStyle(
       color: Colors.grey,
+      letterSpacing: 1,
     ),
     prefixIcon: prefixIcon,
     prefixIconColor: Colors.grey,

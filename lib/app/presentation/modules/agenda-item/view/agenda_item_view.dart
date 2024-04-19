@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../../../../core/adaptative_screen/adaptative_screen.dart';
 import '../../../global/utils/images_path.dart';
 
-import 'widget/icon_weather_w.dart';
-import 'widget/info_item_w.dart';
+import 'widgets/icon_weather_w.dart';
+import 'widgets/info_item_w.dart';
 
 class AgendaItemView extends StatelessWidget {
   final AdaptativeScreen adaptativeScreen;
@@ -24,12 +24,19 @@ class AgendaItemView extends StatelessWidget {
             height: adaptativeScreen.bhp(100),
           ),
           Container(
+            width: adaptativeScreen.width,
+            height: adaptativeScreen.height,
+            color: Colors.black.withOpacity(0.4),
+          ),
+          Container(
             margin: EdgeInsets.only(
               bottom: adaptativeScreen.bhp(90),
             ),
             child: AppBar(
               backgroundColor: Colors.transparent,
-              iconTheme: const IconThemeData(color: Colors.white),
+              iconTheme: const IconThemeData(
+                color: Colors.white,
+              ),
             ),
           ),
           InfoItemW(

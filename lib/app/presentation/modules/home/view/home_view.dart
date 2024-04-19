@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../core/adaptative_screen/adaptative_screen.dart';
 import '../../../global/widgets/sliver_size_box_gw.dart';
+import '../../../router/routes/fields_route.dart';
+
 import 'widgets/agenda_item_w.dart';
 
 class HomeView extends StatelessWidget {
@@ -34,7 +37,9 @@ class HomeView extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () => context.pushNamed(
+          FieldsRoute.path,
+        ),
         child: const Icon(Icons.add),
       ),
     );

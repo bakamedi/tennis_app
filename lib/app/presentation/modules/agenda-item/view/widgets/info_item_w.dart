@@ -8,7 +8,10 @@ import '../../../../global/extensions/widgets_ext.dart';
 class InfoItemW extends StatelessWidget {
   final AdaptativeScreen adaptativeScreen;
 
-  const InfoItemW({super.key, required this.adaptativeScreen});
+  const InfoItemW({
+    super.key,
+    required this.adaptativeScreen,
+  });
 
   @override
   Widget build(BuildContext context) {

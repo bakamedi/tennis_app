@@ -1,5 +1,4 @@
-import '../../core/typedefs.dart';
-
 abstract class TennisRepository {
-  void findAll();
+  Future<void> initDatabase();
+  Future<void> findAll();
 }

@@ -9,8 +9,13 @@ class TennisRepositoryImpl extends TennisRepository {
   }) : _localServiceDB = localServiceDB;
 
   @override
-  void findAll() async {
+  Future<void> findAll() async {
     final response = await _localServiceDB.find();
     print(response);
+  }
+
+  @override
+  Future<void> initDatabase() async {
+    await _localServiceDB.initializeDatabase();
   }
 }

@@ -12,17 +12,8 @@ import 'domain/repositories/tennis_repository.dart';
 
 const String _dbName = 'tennis.db';
 
-const initalDB = {
-  "fields": [
-    {"id": "1", "state": "", "path": "assets/fields/clay.jpeg", "dates": []},
-    {"id": "2", "state": "", "path": "assets/fields/grass.jpeg", "dates": []},
-    {"id": "3", "state": "", "path": "assets/fields/grass.jpeg", "dates": []}
-  ]
-};
-
 late Database _db;
 late StoreRef<Object?, Object?> _storeRef;
-late Object? _key;
 
 Future<void> injectDependencies() async {
   DatabaseFactory dbFactory = databaseFactoryIo;
@@ -31,17 +22,12 @@ Future<void> injectDependencies() async {
   final databasePath = join(appDir.path, _dbName);
   _db = await dbFactory.openDatabase(databasePath);
   _storeRef = StoreRef.main();
-  _key = await _storeRef.add(
-    _db,
-    initalDB,
-  );
 }
 
 final dbProvider = Provider(
   (ref) => LocalServiceDB(
     db: _db,
     store: _storeRef,
-    key: _key,
   ),
 );
 

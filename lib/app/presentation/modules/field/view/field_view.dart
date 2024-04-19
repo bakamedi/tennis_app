@@ -32,6 +32,10 @@ class FieldView extends StatelessWidget {
                   ),
                 ],
               ),
+              ElevatedButton(
+                onPressed: () => fieldController.test(),
+                child: Text('test'),
+              ),
               CustomScrollView(
                 shrinkWrap: true,
                 slivers: [

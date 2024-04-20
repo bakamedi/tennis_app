@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_meedu/consumer/consumer_widget.dart';
 import 'package:go_router/go_router.dart';
+import 'package:tennis_agenda_app/app/core/icons/tennis_app_icons.dart';
 
 import '../../../../core/adaptative_screen/adaptative_screen.dart';
 import '../../../global/widgets/sliver_size_box_gw.dart';
@@ -47,7 +48,10 @@ class HomeView extends StatelessWidget {
         onPressed: () => context.pushNamed(
           FieldsRoute.path,
         ),
-        child: const Icon(Icons.add),
+        backgroundColor: Colors.grey.shade300,
+        child: const Icon(
+          TennisAppIcons.calendar_plus_regular,
+        ),
       ),
     );
   }

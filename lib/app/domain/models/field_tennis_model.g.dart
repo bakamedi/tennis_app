@@ -23,6 +23,7 @@ Map<String, dynamic> _$$TennisFieldModelImplToJson(
 _$FieldImpl _$$FieldImplFromJson(Map<String, dynamic> json) => _$FieldImpl(
       id: json['id'] as String?,
       state: json['state'] as String?,
+      name: json['name'] as String?,
       path: json['path'] as String?,
       dates: (json['dates'] as List<dynamic>?)
           ?.map((e) => Date.fromJson(e as Map<String, dynamic>))
@@ -33,6 +34,7 @@ Map<String, dynamic> _$$FieldImplToJson(_$FieldImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'state': instance.state,
+      'name': instance.name,
       'path': instance.path,
       'dates': instance.dates,
     };

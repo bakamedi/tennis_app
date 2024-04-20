@@ -31,6 +31,7 @@ class Field with _$Field {
   const factory Field({
     @JsonKey(name: "id") String? id,
     @JsonKey(name: "state") String? state,
+    @JsonKey(name: "name") String? name,
     @JsonKey(name: "path") String? path,
     @JsonKey(name: "dates") List<Date>? dates,
   }) = _Field;

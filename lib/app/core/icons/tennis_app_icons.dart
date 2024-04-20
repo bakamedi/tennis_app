@@ -13,8 +13,7 @@
 ///
 ///
 ///
-library;
-// ignore_for_file: constant_identifier_names
+// ignore_for_file: constant_identifier_names, dangling_library_doc_comments
 
 import 'package:flutter/widgets.dart';
 
@@ -52,4 +51,6 @@ class TennisAppIcons {
       IconData(0xe80c, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData user_solid =
       IconData(0xe80d, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData tennis_court_svgrepo_com_2 =
+      IconData(0xe80e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

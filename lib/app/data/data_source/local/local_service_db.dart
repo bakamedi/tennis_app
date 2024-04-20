@@ -6,9 +6,27 @@ import '../../../domain/models/field_tennis_model.dart';
 
 const initalDB = {
   "fields": [
-    {"id": "1", "state": "", "path": "assets/fields/clay.jpeg", "dates": []},
-    {"id": "2", "state": "", "path": "assets/fields/grass.jpeg", "dates": []},
-    {"id": "3", "state": "", "path": "assets/fields/grass.jpeg", "dates": []}
+    {
+      "id": "1",
+      "name": "Césped",
+      "state": "",
+      "path": "assets/fields/grass.jpeg",
+      "dates": []
+    },
+    {
+      "id": "2",
+      "name": "Arcilla",
+      "state": "",
+      "path": "assets/fields/clay.jpeg",
+      "dates": []
+    },
+    {
+      "id": "3",
+      "name": "Dura",
+      "state": "",
+      "path": "assets/fields/hard.jpeg",
+      "dates": []
+    }
   ]
 };
 

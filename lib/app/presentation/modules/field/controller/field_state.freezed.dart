@@ -19,6 +19,10 @@ mixin _$FieldState {
   bool get fetching => throw _privateConstructorUsedError;
   DateTime? get dateTo => throw _privateConstructorUsedError;
   DateTime? get timeTo => throw _privateConstructorUsedError;
+  List<Field>? get fields => throw _privateConstructorUsedError;
+  Field? get selectedField => throw _privateConstructorUsedError;
+  Color get color => throw _privateConstructorUsedError;
+  PageController? get controllerPage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $FieldStateCopyWith<FieldState> get copyWith =>
@@ -31,7 +35,16 @@ abstract class $FieldStateCopyWith<$Res> {
           FieldState value, $Res Function(FieldState) then) =
       _$FieldStateCopyWithImpl<$Res, FieldState>;
   @useResult
-  $Res call({bool fetching, DateTime? dateTo, DateTime? timeTo});
+  $Res call(
+      {bool fetching,
+      DateTime? dateTo,
+      DateTime? timeTo,
+      List<Field>? fields,
+      Field? selectedField,
+      Color color,
+      PageController? controllerPage});
+
+  $FieldCopyWith<$Res>? get selectedField;
 }
 
 /// @nodoc
@@ -50,6 +63,10 @@ class _$FieldStateCopyWithImpl<$Res, $Val extends FieldState>
     Object? fetching = null,
     Object? dateTo = freezed,
     Object? timeTo = freezed,
+    Object? fields = freezed,
+    Object? selectedField = freezed,
+    Object? color = null,
+    Object? controllerPage = freezed,
   }) {
     return _then(_value.copyWith(
       fetching: null == fetching
@@ -64,7 +81,35 @@ class _$FieldStateCopyWithImpl<$Res, $Val extends FieldState>
           ? _value.timeTo
           : timeTo // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      fields: freezed == fields
+          ? _value.fields
+          : fields // ignore: cast_nullable_to_non_nullable
+              as List<Field>?,
+      selectedField: freezed == selectedField
+          ? _value.selectedField
+          : selectedField // ignore: cast_nullable_to_non_nullable
+              as Field?,
+      color: null == color
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as Color,
+      controllerPage: freezed == controllerPage
+          ? _value.controllerPage
+          : controllerPage // ignore: cast_nullable_to_non_nullable
+              as PageController?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $FieldCopyWith<$Res>? get selectedField {
+    if (_value.selectedField == null) {
+      return null;
+    }
+
+    return $FieldCopyWith<$Res>(_value.selectedField!, (value) {
+      return _then(_value.copyWith(selectedField: value) as $Val);
+    });
   }
 }
 
@@ -76,7 +121,17 @@ abstract class _$$FieldStateImplCopyWith<$Res>
       __$$FieldStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool fetching, DateTime? dateTo, DateTime? timeTo});
+  $Res call(
+      {bool fetching,
+      DateTime? dateTo,
+      DateTime? timeTo,
+      List<Field>? fields,
+      Field? selectedField,
+      Color color,
+      PageController? controllerPage});
+
+  @override
+  $FieldCopyWith<$Res>? get selectedField;
 }
 
 /// @nodoc
@@ -93,6 +148,10 @@ class __$$FieldStateImplCopyWithImpl<$Res>
     Object? fetching = null,
     Object? dateTo = freezed,
     Object? timeTo = freezed,
+    Object? fields = freezed,
+    Object? selectedField = freezed,
+    Object? color = null,
+    Object? controllerPage = freezed,
   }) {
     return _then(_$FieldStateImpl(
       fetching: null == fetching
@@ -107,6 +166,22 @@ class __$$FieldStateImplCopyWithImpl<$Res>
           ? _value.timeTo
           : timeTo // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      fields: freezed == fields
+          ? _value._fields
+          : fields // ignore: cast_nullable_to_non_nullable
+              as List<Field>?,
+      selectedField: freezed == selectedField
+          ? _value.selectedField
+          : selectedField // ignore: cast_nullable_to_non_nullable
+              as Field?,
+      color: null == color
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as Color,
+      controllerPage: freezed == controllerPage
+          ? _value.controllerPage
+          : controllerPage // ignore: cast_nullable_to_non_nullable
+              as PageController?,
     ));
   }
 }
@@ -114,8 +189,16 @@ class __$$FieldStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$FieldStateImpl extends _FieldState {
-  const _$FieldStateImpl({this.fetching = false, this.dateTo, this.timeTo})
-      : super._();
+  const _$FieldStateImpl(
+      {this.fetching = false,
+      this.dateTo,
+      this.timeTo,
+      final List<Field>? fields,
+      this.selectedField,
+      this.color = Colors.white,
+      this.controllerPage})
+      : _fields = fields,
+        super._();
 
   @override
   @JsonKey()
@@ -124,10 +207,27 @@ class _$FieldStateImpl extends _FieldState {
   final DateTime? dateTo;
   @override
   final DateTime? timeTo;
+  final List<Field>? _fields;
+  @override
+  List<Field>? get fields {
+    final value = _fields;
+    if (value == null) return null;
+    if (_fields is EqualUnmodifiableListView) return _fields;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  final Field? selectedField;
+  @override
+  @JsonKey()
+  final Color color;
+  @override
+  final PageController? controllerPage;
 
   @override
   String toString() {
-    return 'FieldState(fetching: $fetching, dateTo: $dateTo, timeTo: $timeTo)';
+    return 'FieldState(fetching: $fetching, dateTo: $dateTo, timeTo: $timeTo, fields: $fields, selectedField: $selectedField, color: $color, controllerPage: $controllerPage)';
   }
 
   @override
@@ -138,11 +238,25 @@ class _$FieldStateImpl extends _FieldState {
             (identical(other.fetching, fetching) ||
                 other.fetching == fetching) &&
             (identical(other.dateTo, dateTo) || other.dateTo == dateTo) &&
-            (identical(other.timeTo, timeTo) || other.timeTo == timeTo));
+            (identical(other.timeTo, timeTo) || other.timeTo == timeTo) &&
+            const DeepCollectionEquality().equals(other._fields, _fields) &&
+            (identical(other.selectedField, selectedField) ||
+                other.selectedField == selectedField) &&
+            (identical(other.color, color) || other.color == color) &&
+            (identical(other.controllerPage, controllerPage) ||
+                other.controllerPage == controllerPage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, fetching, dateTo, timeTo);
+  int get hashCode => Object.hash(
+      runtimeType,
+      fetching,
+      dateTo,
+      timeTo,
+      const DeepCollectionEquality().hash(_fields),
+      selectedField,
+      color,
+      controllerPage);
 
   @JsonKey(ignore: true)
   @override
@@ -155,7 +269,11 @@ abstract class _FieldState extends FieldState {
   const factory _FieldState(
       {final bool fetching,
       final DateTime? dateTo,
-      final DateTime? timeTo}) = _$FieldStateImpl;
+      final DateTime? timeTo,
+      final List<Field>? fields,
+      final Field? selectedField,
+      final Color color,
+      final PageController? controllerPage}) = _$FieldStateImpl;
   const _FieldState._() : super._();
 
   @override
@@ -164,6 +282,14 @@ abstract class _FieldState extends FieldState {
   DateTime? get dateTo;
   @override
   DateTime? get timeTo;
+  @override
+  List<Field>? get fields;
+  @override
+  Field? get selectedField;
+  @override
+  Color get color;
+  @override
+  PageController? get controllerPage;
   @override
   @JsonKey(ignore: true)
   _$$FieldStateImplCopyWith<_$FieldStateImpl> get copyWith =>

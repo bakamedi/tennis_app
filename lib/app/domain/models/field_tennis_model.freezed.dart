@@ -176,6 +176,8 @@ mixin _$Field {
   String? get id => throw _privateConstructorUsedError;
   @JsonKey(name: "state")
   String? get state => throw _privateConstructorUsedError;
+  @JsonKey(name: "name")
+  String? get name => throw _privateConstructorUsedError;
   @JsonKey(name: "path")
   String? get path => throw _privateConstructorUsedError;
   @JsonKey(name: "dates")
@@ -194,6 +196,7 @@ abstract class $FieldCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: "id") String? id,
       @JsonKey(name: "state") String? state,
+      @JsonKey(name: "name") String? name,
       @JsonKey(name: "path") String? path,
       @JsonKey(name: "dates") List<Date>? dates});
 }
@@ -213,6 +216,7 @@ class _$FieldCopyWithImpl<$Res, $Val extends Field>
   $Res call({
     Object? id = freezed,
     Object? state = freezed,
+    Object? name = freezed,
     Object? path = freezed,
     Object? dates = freezed,
   }) {
@@ -224,6 +228,10 @@ class _$FieldCopyWithImpl<$Res, $Val extends Field>
       state: freezed == state
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String?,
       path: freezed == path
           ? _value.path
@@ -247,6 +255,7 @@ abstract class _$$FieldImplCopyWith<$Res> implements $FieldCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: "id") String? id,
       @JsonKey(name: "state") String? state,
+      @JsonKey(name: "name") String? name,
       @JsonKey(name: "path") String? path,
       @JsonKey(name: "dates") List<Date>? dates});
 }
@@ -264,6 +273,7 @@ class __$$FieldImplCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? state = freezed,
+    Object? name = freezed,
     Object? path = freezed,
     Object? dates = freezed,
   }) {
@@ -275,6 +285,10 @@ class __$$FieldImplCopyWithImpl<$Res>
       state: freezed == state
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String?,
       path: freezed == path
           ? _value.path
@@ -294,6 +308,7 @@ class _$FieldImpl implements _Field {
   const _$FieldImpl(
       {@JsonKey(name: "id") this.id,
       @JsonKey(name: "state") this.state,
+      @JsonKey(name: "name") this.name,
       @JsonKey(name: "path") this.path,
       @JsonKey(name: "dates") final List<Date>? dates})
       : _dates = dates;
@@ -307,6 +322,9 @@ class _$FieldImpl implements _Field {
   @override
   @JsonKey(name: "state")
   final String? state;
+  @override
+  @JsonKey(name: "name")
+  final String? name;
   @override
   @JsonKey(name: "path")
   final String? path;
@@ -323,7 +341,7 @@ class _$FieldImpl implements _Field {
 
   @override
   String toString() {
-    return 'Field(id: $id, state: $state, path: $path, dates: $dates)';
+    return 'Field(id: $id, state: $state, name: $name, path: $path, dates: $dates)';
   }
 
   @override
@@ -333,13 +351,14 @@ class _$FieldImpl implements _Field {
             other is _$FieldImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.state, state) || other.state == state) &&
+            (identical(other.name, name) || other.name == name) &&
             (identical(other.path, path) || other.path == path) &&
             const DeepCollectionEquality().equals(other._dates, _dates));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, state, path,
+  int get hashCode => Object.hash(runtimeType, id, state, name, path,
       const DeepCollectionEquality().hash(_dates));
 
   @JsonKey(ignore: true)
@@ -360,6 +379,7 @@ abstract class _Field implements Field {
   const factory _Field(
       {@JsonKey(name: "id") final String? id,
       @JsonKey(name: "state") final String? state,
+      @JsonKey(name: "name") final String? name,
       @JsonKey(name: "path") final String? path,
       @JsonKey(name: "dates") final List<Date>? dates}) = _$FieldImpl;
 
@@ -371,6 +391,9 @@ abstract class _Field implements Field {
   @override
   @JsonKey(name: "state")
   String? get state;
+  @override
+  @JsonKey(name: "name")
+  String? get name;
   @override
   @JsonKey(name: "path")
   String? get path;

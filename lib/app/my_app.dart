@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       routerConfig: routerProvider.read(),
-      title: 'Tennis app',
+      title: 'Tennis App',
     );
   }
 }

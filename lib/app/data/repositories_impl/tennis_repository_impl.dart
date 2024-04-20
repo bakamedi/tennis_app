@@ -1,3 +1,4 @@
+import '../../domain/models/field_tennis_model.dart';
 import '../../domain/repositories/tennis_repository.dart';
 import '../data_source/local/local_service_db.dart';
 
@@ -9,9 +10,8 @@ class TennisRepositoryImpl extends TennisRepository {
   }) : _localServiceDB = localServiceDB;
 
   @override
-  Future<void> findAll() async {
-    final response = await _localServiceDB.find();
-    print(response);
+  Future<TennisFieldModel> findAll() async {
+    return await _localServiceDB.findAll();
   }
 
   @override

@@ -1,4 +1,8 @@
+import 'dart:convert';
+
 import 'package:sembast/sembast.dart';
+
+import '../../../domain/models/field_tennis_model.dart';
 
 const initalDB = {
   "fields": [
@@ -18,8 +22,10 @@ class LocalServiceDB {
   })  : _db = db,
         _store = store;
 
-  Future<List<RecordSnapshot<Object?, Object?>>> find() async {
-    return await _store.find(_db);
+  Future<TennisFieldModel> findAll() async {
+    final record = (await _store.find(_db)).first;
+    final values = json.encode(record.value);
+    return tennisFieldModelFromJson(values);
   }
 
   Future<void> initializeDatabase() async {

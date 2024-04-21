@@ -7,6 +7,7 @@ import '../../../../../core/adaptative_screen/adaptative_screen.dart';
 import '../../../../../core/icons/tennis_app_icons.dart';
 import '../../../../../domain/models/user_tennis_field_model.dart';
 import '../../../../global/extensions/widgets_ext.dart';
+import '../../../../global/utils/custom_date.dart';
 import '../../../../router/routes/agenda_item_route.dart';
 import '../../controller/home_controller.dart';
 import 'agenda_img_w.dart';
@@ -44,11 +45,6 @@ class AgendaItemW extends StatelessWidget {
           key: ValueKey(index),
           endActionPane: ActionPane(
             motion: const ScrollMotion(),
-            dismissible: DismissiblePane(
-              onDismissed: () {
-                print('hola mundo dssd');
-              },
-            ),
             children: [
               SlidableAction(
                 onPressed: (context) => homeController.deleteReservation(
@@ -69,6 +65,7 @@ class AgendaItemW extends StatelessWidget {
             children: [
               AgendaImgW(
                 adaptativeScreen: adaptativeScreen,
+                probability: userTennisFieldModel.rainProbability ?? '',
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -76,12 +73,16 @@ class AgendaItemW extends StatelessWidget {
                   _titleAndSubtitle(
                     icon: TennisAppIcons.calendar_days_regular,
                     title: 'Fecha Agendada:',
-                    subTitle: userTennisFieldModel.date.toString(),
+                    subTitle: CustomDate.dateInfo(
+                      userTennisFieldModel.date ?? '',
+                    ),
                   ),
                   _titleAndSubtitle(
                     icon: TennisAppIcons.clock_solid,
                     title: 'Hora:',
-                    subTitle: userTennisFieldModel.date.toString(),
+                    subTitle: CustomDate.timeInfo(
+                      userTennisFieldModel.date ?? '',
+                    ),
                   ),
                   _titleAndSubtitle(
                     icon: TennisAppIcons.circle_user_solid,

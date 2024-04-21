@@ -42,5 +42,6 @@ class HomeController extends StateNotifier<HomeState> {
 
   void deleteReservation(UserTennisFieldModel userField) async {
     await _tennisRepository.deleteReservation(userField);
+    await findAllReservation();
   }
 }

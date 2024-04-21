@@ -150,6 +150,7 @@ class LocalServiceDB {
 
   Future<void> delete(UserTennisFieldModel userField) async {
     final finder = Finder(filter: Filter.byKey(userField.id));
+    print(finder);
     await _userStore.delete(
       _db,
       finder: finder,
@@ -165,7 +166,7 @@ class LocalServiceDB {
       _db,
       finder: finder,
     );
-
+    print(recordSnapshots.length);
     return recordSnapshots.map((snapshot) {
       final user = UserTennisFieldModel.fromJson(snapshot.value);
       return user;

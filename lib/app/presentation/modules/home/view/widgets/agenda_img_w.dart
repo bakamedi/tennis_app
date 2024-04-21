@@ -6,10 +6,12 @@ import '../../../../global/utils/images_path.dart';
 
 class AgendaImgW extends StatelessWidget {
   final AdaptativeScreen adaptativeScreen;
+  final String probability;
 
   const AgendaImgW({
     super.key,
     required this.adaptativeScreen,
+    required this.probability,
   });
 
   @override
@@ -47,7 +49,7 @@ class AgendaImgW extends StatelessWidget {
                   size: adaptativeScreen.dp(5),
                 ),
                 Text(
-                  '70% de lluvia',
+                  '$probability% de lluvia',
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: Colors.white,

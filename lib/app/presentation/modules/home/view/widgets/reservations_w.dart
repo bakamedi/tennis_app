@@ -23,6 +23,13 @@ class ReservationW extends StatelessWidget {
         ),
       );
     }
+    if (homeController.userTennisFields!.isEmpty) {
+      return const SliverToBoxAdapter(
+        child: Center(
+          child: Text('No hay datos'),
+        ),
+      );
+    }
     return SliverList.builder(
       itemCount: homeController.userTennisFields!.length,
       itemBuilder: (context, index) {

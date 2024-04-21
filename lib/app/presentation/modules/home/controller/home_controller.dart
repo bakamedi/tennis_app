@@ -32,7 +32,6 @@ class HomeController extends StateNotifier<HomeState> {
 
   Future<void> findAllReservation() async {
     final response = await _tennisRepository.findAllReservation();
-    print(response);
     onlyUpdate(
       state = state.copyWith(
         userTennisFields: response,

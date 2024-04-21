@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import '../../../../../core/adaptative_screen/adaptative_screen.dart';
 import '../../controller/home_controller.dart';
@@ -17,16 +18,30 @@ class ReservationW extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (homeController.userTennisFields == null) {
-      return const SliverToBoxAdapter(
+      return SliverToBoxAdapter(
         child: Center(
-          child: Text('No hay datos'),
+          child: Container(
+            margin: EdgeInsets.only(
+              top: adaptativeScreen.bhp(40),
+            ),
+            child: const Text(
+              'No hay datos que presentar, has tu primera reserva',
+            ),
+          ),
         ),
       );
     }
     if (homeController.userTennisFields!.isEmpty) {
-      return const SliverToBoxAdapter(
+      return SliverToBoxAdapter(
         child: Center(
-          child: Text('No hay datos'),
+          child: Container(
+            margin: EdgeInsets.only(
+              top: adaptativeScreen.bhp(40),
+            ),
+            child: const Text(
+              'No hay datos que presentar, has tu primera reserva',
+            ),
+          ),
         ),
       );
     }

@@ -137,7 +137,6 @@ class LocalServiceDB {
     final count = await _store.count(_db);
 
     if (count == 0) {
-      print(_userStore);
       await _store.add(
         _db,
         initalDB,
@@ -179,7 +178,6 @@ class LocalServiceDB {
       _db,
       finder: finder,
     );
-    print(recordSnapshots.length);
     return recordSnapshots.map((snapshot) {
       final user = UserTennisFieldModel.fromJson(snapshot.value);
       return user;

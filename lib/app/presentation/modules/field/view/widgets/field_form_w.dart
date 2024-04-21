@@ -46,7 +46,8 @@ class FieldFormW extends StatelessWidget {
             'Reserva a nombre de:',
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
-              fontSize: adaptativeScreen.dp(1),
+              color: Colors.white,
+              fontSize: adaptativeScreen.dp(1.5),
               fontWeight: FontWeight.bold,
               letterSpacing: 1,
             ),

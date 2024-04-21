@@ -14,6 +14,7 @@ const String _dbName = 'tennis.db';
 
 late Database _db;
 late StoreRef<Object?, Object?> _storeRef;
+late StoreRef<Object?, Object?> _userStore;
 
 Future<void> injectDependencies() async {
   DatabaseFactory dbFactory = databaseFactoryIo;
@@ -22,12 +23,14 @@ Future<void> injectDependencies() async {
   final databasePath = join(appDir.path, _dbName);
   _db = await dbFactory.openDatabase(databasePath);
   _storeRef = StoreRef.main();
+  _userStore = intMapStoreFactory.store(USER_FIELDS);
 }
 
 final dbProvider = Provider(
   (ref) => LocalServiceDB(
     db: _db,
     store: _storeRef,
+    userStore: _userStore,
   ),
 );
 

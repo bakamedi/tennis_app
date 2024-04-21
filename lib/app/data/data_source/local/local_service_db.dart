@@ -116,13 +116,15 @@ const String USER_FIELDS = 'user-fields';
 class LocalServiceDB {
   final Database _db;
   final StoreRef<Object?, Object?> _store;
-  late StoreRef<int, Map<String, Object?>> _userStore;
+  final StoreRef<int, Map<String, Object?>> _userStore;
 
   LocalServiceDB({
     required db,
     required store,
+    required userStore,
   })  : _db = db,
-        _store = store;
+        _store = store,
+        _userStore = userStore;
 
   Future<TennisFieldModel> findAll() async {
     final record = (await _store.find(_db)).first;
@@ -134,8 +136,7 @@ class LocalServiceDB {
     final count = await _store.count(_db);
 
     if (count == 0) {
-      _userStore = intMapStoreFactory.store(USER_FIELDS);
-
+      print(_userStore);
       await _store.add(
         _db,
         initalDB,

@@ -18,6 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$HomeState {
   ScrollController? get scrollController => throw _privateConstructorUsedError;
   bool get fetching => throw _privateConstructorUsedError;
+  List<UserTennisFieldModel>? get userTennisFields =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $HomeStateCopyWith<HomeState> get copyWith =>
@@ -29,7 +31,10 @@ abstract class $HomeStateCopyWith<$Res> {
   factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
       _$HomeStateCopyWithImpl<$Res, HomeState>;
   @useResult
-  $Res call({ScrollController? scrollController, bool fetching});
+  $Res call(
+      {ScrollController? scrollController,
+      bool fetching,
+      List<UserTennisFieldModel>? userTennisFields});
 }
 
 /// @nodoc
@@ -47,6 +52,7 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
   $Res call({
     Object? scrollController = freezed,
     Object? fetching = null,
+    Object? userTennisFields = freezed,
   }) {
     return _then(_value.copyWith(
       scrollController: freezed == scrollController
@@ -57,6 +63,10 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
           ? _value.fetching
           : fetching // ignore: cast_nullable_to_non_nullable
               as bool,
+      userTennisFields: freezed == userTennisFields
+          ? _value.userTennisFields
+          : userTennisFields // ignore: cast_nullable_to_non_nullable
+              as List<UserTennisFieldModel>?,
     ) as $Val);
   }
 }
@@ -69,7 +79,10 @@ abstract class _$$HomeStateImplCopyWith<$Res>
       __$$HomeStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({ScrollController? scrollController, bool fetching});
+  $Res call(
+      {ScrollController? scrollController,
+      bool fetching,
+      List<UserTennisFieldModel>? userTennisFields});
 }
 
 /// @nodoc
@@ -85,6 +98,7 @@ class __$$HomeStateImplCopyWithImpl<$Res>
   $Res call({
     Object? scrollController = freezed,
     Object? fetching = null,
+    Object? userTennisFields = freezed,
   }) {
     return _then(_$HomeStateImpl(
       scrollController: freezed == scrollController
@@ -95,6 +109,10 @@ class __$$HomeStateImplCopyWithImpl<$Res>
           ? _value.fetching
           : fetching // ignore: cast_nullable_to_non_nullable
               as bool,
+      userTennisFields: freezed == userTennisFields
+          ? _value._userTennisFields
+          : userTennisFields // ignore: cast_nullable_to_non_nullable
+              as List<UserTennisFieldModel>?,
     ));
   }
 }
@@ -102,18 +120,32 @@ class __$$HomeStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$HomeStateImpl extends _HomeState {
-  const _$HomeStateImpl({this.scrollController, this.fetching = false})
-      : super._();
+  const _$HomeStateImpl(
+      {this.scrollController,
+      this.fetching = false,
+      final List<UserTennisFieldModel>? userTennisFields})
+      : _userTennisFields = userTennisFields,
+        super._();
 
   @override
   final ScrollController? scrollController;
   @override
   @JsonKey()
   final bool fetching;
+  final List<UserTennisFieldModel>? _userTennisFields;
+  @override
+  List<UserTennisFieldModel>? get userTennisFields {
+    final value = _userTennisFields;
+    if (value == null) return null;
+    if (_userTennisFields is EqualUnmodifiableListView)
+      return _userTennisFields;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'HomeState(scrollController: $scrollController, fetching: $fetching)';
+    return 'HomeState(scrollController: $scrollController, fetching: $fetching, userTennisFields: $userTennisFields)';
   }
 
   @override
@@ -124,11 +156,14 @@ class _$HomeStateImpl extends _HomeState {
             (identical(other.scrollController, scrollController) ||
                 other.scrollController == scrollController) &&
             (identical(other.fetching, fetching) ||
-                other.fetching == fetching));
+                other.fetching == fetching) &&
+            const DeepCollectionEquality()
+                .equals(other._userTennisFields, _userTennisFields));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, scrollController, fetching);
+  int get hashCode => Object.hash(runtimeType, scrollController, fetching,
+      const DeepCollectionEquality().hash(_userTennisFields));
 
   @JsonKey(ignore: true)
   @override
@@ -140,13 +175,16 @@ class _$HomeStateImpl extends _HomeState {
 abstract class _HomeState extends HomeState {
   const factory _HomeState(
       {final ScrollController? scrollController,
-      final bool fetching}) = _$HomeStateImpl;
+      final bool fetching,
+      final List<UserTennisFieldModel>? userTennisFields}) = _$HomeStateImpl;
   const _HomeState._() : super._();
 
   @override
   ScrollController? get scrollController;
   @override
   bool get fetching;
+  @override
+  List<UserTennisFieldModel>? get userTennisFields;
   @override
   @JsonKey(ignore: true)
   _$$HomeStateImplCopyWith<_$HomeStateImpl> get copyWith =>

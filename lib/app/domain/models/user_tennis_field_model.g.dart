@@ -14,6 +14,7 @@ _$UserTennisFieldModelImpl _$$UserTennisFieldModelImplFromJson(
       rainProbability: json['rain_probability'] as String?,
       title: json['title'] as String?,
       path: json['path'] as String?,
+      name: json['name'] as String?,
     );
 
 Map<String, dynamic> _$$UserTennisFieldModelImplToJson(
@@ -24,4 +25,5 @@ Map<String, dynamic> _$$UserTennisFieldModelImplToJson(
       'rain_probability': instance.rainProbability,
       'title': instance.title,
       'path': instance.path,
+      'name': instance.name,
     };

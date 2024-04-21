@@ -24,6 +24,7 @@ class UserTennisFieldModel with _$UserTennisFieldModel {
     @JsonKey(name: "rain_probability") String? rainProbability,
     @JsonKey(name: "title") String? title,
     @JsonKey(name: "path") String? path,
+    @JsonKey(name: "name") String? name,
   }) = _UserTennisFieldModel;
 
   factory UserTennisFieldModel.fromJson(Map<String, dynamic> json) =>

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_meedu/consumer/consumer_widget.dart';
 import 'package:go_router/go_router.dart';
-import 'package:tennis_agenda_app/app/core/icons/tennis_app_icons.dart';
 
 import '../../../../core/adaptative_screen/adaptative_screen.dart';
+import '../../../../core/icons/tennis_app_icons.dart';
 import '../../../global/widgets/sliver_size_box_gw.dart';
 import '../../../router/routes/fields_route.dart';
 
 import '../controller/home_controller.dart';
-import 'widgets/agenda_item_w.dart';
+import 'widgets/reservations_w.dart';
 
 class HomeView extends StatelessWidget {
   final AdaptativeScreen adaptativeScreen;
@@ -28,14 +28,9 @@ class HomeView extends StatelessWidget {
               SliverSizeBoxGW(
                 height: adaptativeScreen.bhp(9),
               ),
-              SliverList.builder(
-                itemCount: 10,
-                itemBuilder: (context, index) {
-                  return AgendaItemW(
-                    adaptativeScreen: adaptativeScreen,
-                    index: index,
-                  );
-                },
+              ReservationW(
+                adaptativeScreen: adaptativeScreen,
+                homeController: homeController,
               ),
               SliverSizeBoxGW(
                 height: adaptativeScreen.bhp(5),

@@ -2,6 +2,7 @@ import 'package:flutter_meedu/notifiers.dart';
 import 'package:flutter_meedu/providers.dart';
 
 import '../../../../dependency_injection.dart.dart';
+import '../../../../domain/models/user_tennis_field_model.dart';
 import '../../../../domain/repositories/tennis_repository.dart';
 import 'home_state.dart';
 
@@ -22,7 +23,24 @@ class HomeController extends StateNotifier<HomeState> {
     init();
   }
 
+  List<UserTennisFieldModel>? get userTennisFields => state.userTennisFields;
+
   void init() async {
     await _tennisRepository.initDatabase();
+    await findAllReservation();
+  }
+
+  Future<void> findAllReservation() async {
+    final response = await _tennisRepository.findAllReservation();
+    print(response);
+    onlyUpdate(
+      state = state.copyWith(
+        userTennisFields: response,
+      ),
+    );
+  }
+
+  void deleteReservation(UserTennisFieldModel userField) async {
+    await _tennisRepository.deleteReservation(userField);
   }
 }

@@ -8,6 +8,7 @@ import 'package:flutter_meedu/providers.dart';
 
 import '../../../../dependency_injection.dart.dart';
 import '../../../../domain/models/field_tennis_model.dart';
+import '../../../../domain/models/user_tennis_field_model.dart';
 import '../../../../domain/repositories/tennis_repository.dart';
 import '../../../global/utils/custom_date.dart';
 import '../../../global/utils/images_path.dart';
@@ -162,10 +163,8 @@ class FieldController extends StateNotifier<FieldState> {
     List<CalendarEventData> tmp = [];
     for (final element in fields!) {
       if (element.id == id) {
-        print(element.id);
         for (final date in element.dates!) {
           print(date.date!);
-          final dItem = CustomDate.parteDatetime(date.date!);
           tmp.add(
             CalendarEventData(
               title: element.name!,
@@ -208,13 +207,21 @@ class FieldController extends StateNotifier<FieldState> {
     );
   }
 
-  void reservation() {
+  Future<void> reservation() async {
     print(state.selectedField!.id);
     print(state.selectedField!.name);
     print(state.selectedField!.path);
     print(state.dateTo);
     print(state.timeTo);
     print(state.reservationName);
+    final reservation = UserTennisFieldModel(
+      id: state.selectedField!.id,
+      date: state.dateTo.toString(),
+      path: state.selectedField!.path,
+      rainProbability: '30',
+      name: state.reservationName,
+    );
+    await _tennisRepository.saveReservation(reservation);
   }
 
   @override

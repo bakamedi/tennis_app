@@ -9,6 +9,7 @@ import '../../../../core/adaptative_screen/adaptative_screen.dart';
 import '../../../global/widgets/buttons/primary_btn.dart';
 import '../../../global/widgets/buttons/secondary_btn.dart';
 import '../controller/field_controller.dart';
+import '../utils/save_reservation.dart';
 import 'widgets/field_form_w.dart';
 import 'widgets/selected_calendar_w.dart';
 import 'widgets/selected_field_w.dart';
@@ -88,7 +89,7 @@ class FieldView extends StatelessWidget {
                   child: PrimaryBtn(
                     label: fieldController.btnTxt,
                     verticalSpace: adaptativeScreen.bhp(1),
-                    onPressed: () => fieldController.nextPage(),
+                    onPressed: () => saveReservation(context),
                   ),
                 ),
               ],

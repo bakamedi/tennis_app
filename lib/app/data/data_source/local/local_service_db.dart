@@ -2,6 +2,7 @@
 
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:sembast/sembast.dart';
 
 import '../../../domain/models/field_tennis_model.dart';
@@ -149,12 +150,24 @@ class LocalServiceDB {
   }
 
   Future<void> delete(UserTennisFieldModel userField) async {
-    final finder = Finder(filter: Filter.byKey(userField.id));
-    print(finder);
-    await _userStore.delete(
-      _db,
-      finder: finder,
+    final finder = Finder(
+      filter: Filter.custom(
+        (record) {
+          final custom = record.value;
+          final model = userTennisFieldModelFromJson(
+            json.encode(custom),
+          );
+
+          return userField.id == model.id;
+        },
+      ),
     );
+    final recordSnapshot = await _userStore.findFirst(_db, finder: finder);
+    if (recordSnapshot != null) {
+      await _userStore.delete(_db, finder: finder);
+    } else {
+      debugPrint('No se encontró ningún registro con el ID proporcionado.');
+    }
   }
 
   Future<List<UserTennisFieldModel>> getAllSortedByDate() async {

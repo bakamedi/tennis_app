@@ -27,6 +27,7 @@ class AgendaItemW extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(userTennisFieldModel.path);
     return GestureDetector(
       onTap: () => goAgendaItem(
         context,
@@ -68,6 +69,7 @@ class AgendaItemW extends StatelessWidget {
               AgendaImgW(
                 adaptativeScreen: adaptativeScreen,
                 probability: userTennisFieldModel.rainProbability ?? '',
+                imgPath: userTennisFieldModel.path ?? '',
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

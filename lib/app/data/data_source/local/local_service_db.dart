@@ -171,13 +171,14 @@ class LocalServiceDB {
 
   Future<List<UserTennisFieldModel>> getAllSortedByDate() async {
     final finder = Finder(sortOrders: [
-      SortOrder('date'),
+      SortOrder('date', false),
     ]);
 
     final recordSnapshots = await _userStore.find(
       _db,
       finder: finder,
     );
+
     return recordSnapshots.map((snapshot) {
       final user = UserTennisFieldModel.fromJson(snapshot.value);
       return user;

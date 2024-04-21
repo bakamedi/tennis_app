@@ -2,16 +2,17 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/adaptative_screen/adaptative_screen.dart';
 import '../../../../../core/icons/tennis_app_icons.dart';
-import '../../../../global/utils/images_path.dart';
 
 class AgendaImgW extends StatelessWidget {
   final AdaptativeScreen adaptativeScreen;
   final String probability;
+  final String imgPath;
 
   const AgendaImgW({
     super.key,
     required this.adaptativeScreen,
     required this.probability,
+    required this.imgPath,
   });
 
   @override
@@ -29,7 +30,7 @@ class AgendaImgW extends StatelessWidget {
         alignment: Alignment.center,
         children: [
           Image.asset(
-            ImagesPath.GRASS,
+            imgPath,
             width: adaptativeScreen.bwh(35),
             height: adaptativeScreen.bhp(15),
             fit: BoxFit.cover,

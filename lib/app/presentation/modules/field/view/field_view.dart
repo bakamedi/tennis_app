@@ -1,5 +1,6 @@
-import 'package:calendar_view/calendar_view.dart';
 import 'package:flutter/material.dart';
+
+import 'package:calendar_view/calendar_view.dart';
 import 'package:flutter_meedu/consumer/consumer_widget.dart';
 import 'package:go_router/go_router.dart';
 
@@ -26,8 +27,16 @@ class FieldView extends StatelessWidget {
       builder: (_, ref, __) {
         final fieldController = ref.watch(fieldProvider);
 
+        if (fieldController.events == null) {
+          return Container();
+        }
+
+        if (fieldController.controllerEvent == null) {
+          return Container();
+        }
+
         return CalendarControllerProvider(
-          controller: EventController()..addAll(fieldController.events),
+          controller: fieldController.controllerEvent!,
           child: Scaffold(
             appBar: AppBar(
               backgroundColor: fieldController.color,
@@ -71,13 +80,13 @@ class FieldView extends StatelessWidget {
                 Expanded(
                   child: SecondaryBtn(
                     iconData: Icons.arrow_back_ios,
-                    onPressed: () {},
+                    onPressed: () => fieldController.previousPage(),
                   ),
                 ),
                 Expanded(
                   flex: 3,
                   child: PrimaryBtn(
-                    label: fieldController.getLabelBtn(),
+                    label: fieldController.btnTxt,
                     verticalSpace: adaptativeScreen.bhp(1),
                     onPressed: () => fieldController.nextPage(),
                   ),

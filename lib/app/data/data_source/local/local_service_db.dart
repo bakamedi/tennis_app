@@ -13,27 +13,27 @@ const initalDB = {
       "path": "assets/fields/grass.jpeg",
       "dates": [
         {
-          "date": "2024-04-20 19:42:25.124723",
+          "date": "2024-04-25 09:00:25.124723",
           "rain_probability": "65",
           "available": false
         },
         {
-          "date": "2024-04-20 19:42:25.124765",
+          "date": "2024-04-25 13:21:25.124765",
           "rain_probability": "10",
           "available": false
         },
         {
-          "date": "2024-04-20 19:42:25.124789",
+          "date": "2024-04-27 19:42:25.124789",
           "rain_probability": "74",
           "available": false
         },
         {
-          "date": "2024-04-20 19:42:25.124815",
+          "date": "2024-04-27 19:42:25.124815",
           "rain_probability": "5",
           "available": true
         },
         {
-          "date": "2024-04-20 19:42:25.124837",
+          "date": "2024-04-27 19:42:25.124837",
           "rain_probability": "86",
           "available": false
         }
@@ -46,27 +46,27 @@ const initalDB = {
       "path": "assets/fields/clay.jpeg",
       "dates": [
         {
-          "date": "2024-04-20 19:42:25.124860",
+          "date": "2024-04-22 07:30:25.124860",
           "rain_probability": "4",
           "available": false
         },
         {
-          "date": "2024-04-20 19:42:25.124882",
+          "date": "2024-04-22 13:42:25.124882",
           "rain_probability": "64",
           "available": true
         },
         {
-          "date": "2024-04-20 19:42:25.124903",
+          "date": "2024-04-28 19:42:25.124903",
           "rain_probability": "85",
           "available": true
         },
         {
-          "date": "2024-04-20 19:42:25.124924",
+          "date": "2024-04-29 19:42:25.124924",
           "rain_probability": "45",
           "available": true
         },
         {
-          "date": "2024-04-20 19:42:25.124945",
+          "date": "2024-04-30 19:42:25.124945",
           "rain_probability": "98",
           "available": false
         }
@@ -79,27 +79,27 @@ const initalDB = {
       "path": "assets/fields/hard.jpeg",
       "dates": [
         {
-          "date": "2024-04-20 19:42:25.124968",
+          "date": "2024-04-22 19:42:25.124968",
           "rain_probability": "15",
           "available": true
         },
         {
-          "date": "2024-04-20 19:42:25.124990",
+          "date": "2024-04-25 19:42:25.124990",
           "rain_probability": "23",
           "available": true
         },
         {
-          "date": "2024-04-20 19:42:25.125011",
+          "date": "2024-04-25 19:42:25.125011",
           "rain_probability": "80",
           "available": true
         },
         {
-          "date": "2024-04-20 19:42:25.125041",
+          "date": "2024-04-26 19:42:25.125041",
           "rain_probability": "34",
           "available": false
         },
         {
-          "date": "2024-04-20 19:42:25.125063",
+          "date": "2024-04-26 19:42:25.125063",
           "rain_probability": "81",
           "available": true
         }

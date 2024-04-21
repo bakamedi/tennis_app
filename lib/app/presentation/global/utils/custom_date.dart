@@ -12,4 +12,8 @@ abstract class CustomDate {
   static String parseTime(DateTime date) {
     return DateFormat('hh:mm a').format(date);
   }
+
+  static DateTime parteDatetime(String dateStr) {
+    return DateTime.parse(dateStr);
+  }
 }

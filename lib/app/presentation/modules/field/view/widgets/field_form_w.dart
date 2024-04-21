@@ -31,13 +31,13 @@ class FieldFormW extends StatelessWidget {
               CalendarGW(
                 label: fieldController.getDateTo,
                 onPressed: (date) => fieldController.onChangeDate(
-                  date!,
+                  date,
                 ),
               ),
               TimeGW(
                 label: fieldController.getTimeTo,
                 onPressed: (time) => fieldController.onChangeTime(
-                  time!,
+                  time,
                 ),
               ),
             ],
@@ -52,7 +52,9 @@ class FieldFormW extends StatelessWidget {
             ),
           ),
           InputTextField(
-            onChanged: (p0) {},
+            onChanged: (name) => fieldController.onChangeRevervationName(
+              name,
+            ),
             prefixIcon: const Icon(TennisAppIcons.user_regular),
             backgroundText: 'Escriba el nombre',
           ),

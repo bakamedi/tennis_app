@@ -14,8 +14,8 @@ class EventsDaysW extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverToBoxAdapter(
-      child: const Placeholder(),
+    return SliverList.builder(
+      itemBuilder: (context, index) {},
     );
   }
 }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'package:calendar_view/calendar_view.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../domain/models/field_tennis_model.dart';
@@ -16,6 +18,12 @@ class FieldState with _$FieldState {
     Field? selectedField,
     @Default(Colors.white) Color color,
     PageController? controllerPage,
+    List<CalendarEventData>? events,
+    EventController<Object?>? controllerEvent,
+    @Default('Siguiente') String btnTxt,
+    DateTime? selectedDate,
+    DateTime? selectedTime,
+    @Default('') String reservationName,
   }) = _FieldState;
 
   static FieldState get initialState => FieldState(

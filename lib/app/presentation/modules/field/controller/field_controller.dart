@@ -170,16 +170,6 @@ class FieldController extends StateNotifier<FieldState> {
             CalendarEventData(
               title: element.name!,
               date: CustomDate.parteDatetime(date.date!),
-              startTime: DateTime(
-                  dItem.subtract(Duration(days: 2)).year,
-                  dItem.subtract(Duration(days: 2)).month,
-                  dItem.subtract(Duration(days: 2)).day,
-                  14),
-              endTime: DateTime(
-                  dItem.subtract(Duration(days: 2)).year,
-                  dItem.subtract(Duration(days: 2)).month,
-                  dItem.subtract(Duration(days: 2)).day,
-                  16),
               color: getFieldColor(element),
             ),
           );
@@ -206,35 +196,8 @@ class FieldController extends StateNotifier<FieldState> {
     );
   }
 
-  String getMonthName(int indexMonth) {
-    switch (indexMonth) {
-      case 1:
-        return 'Enero ${NOW.year}';
-      case 2:
-        return 'Febrero ${NOW.year}';
-      case 3:
-        return 'Marzo ${NOW.year}';
-      case 4:
-        return 'Abril ${NOW.year}';
-      case 5:
-        return 'Mayo ${NOW.year}';
-      case 6:
-        return 'Junio ${NOW.year}';
-      case 7:
-        return 'Julio ${NOW.year}';
-      case 8:
-        return 'Agosto ${NOW.year}';
-      case 9:
-        return 'Septiembre ${NOW.year}';
-      case 10:
-        return 'Octubre ${NOW.year}';
-      case 11:
-        return 'Noviembre ${NOW.year}';
-      case 12:
-        return 'Diciembre ${NOW.year}';
-      default:
-        return '';
-    }
+  String getMonthName(DateTime dateTime) {
+    return CustomDate.getMonthName(dateTime);
   }
 
   void onChangeRevervationName(String reservationName) {

@@ -1,8 +1,11 @@
+// ignore_for_file: constant_identifier_names
+
 import 'dart:convert';
 
 import 'package:sembast/sembast.dart';
 
 import '../../../domain/models/field_tennis_model.dart';
+import '../../../domain/models/user_tennis_field_model.dart';
 
 const initalDB = {
   "fields": [
@@ -108,9 +111,12 @@ const initalDB = {
   ]
 };
 
+const String USER_FIELDS = 'user-fields';
+
 class LocalServiceDB {
   final Database _db;
   final StoreRef<Object?, Object?> _store;
+  late StoreRef<int, Map<String, Object?>> _userStore;
 
   LocalServiceDB({
     required db,
@@ -128,10 +134,40 @@ class LocalServiceDB {
     final count = await _store.count(_db);
 
     if (count == 0) {
+      _userStore = intMapStoreFactory.store(USER_FIELDS);
+
       await _store.add(
         _db,
         initalDB,
       );
     }
+  }
+
+  Future<void> insert(UserTennisFieldModel userField) async {
+    await _userStore.add(_db, userField.toJson());
+  }
+
+  Future<void> delete(UserTennisFieldModel userField) async {
+    final finder = Finder(filter: Filter.byKey(userField.id));
+    await _userStore.delete(
+      _db,
+      finder: finder,
+    );
+  }
+
+  Future<List<UserTennisFieldModel>> getAllSortedByDate() async {
+    final finder = Finder(sortOrders: [
+      SortOrder('date'),
+    ]);
+
+    final recordSnapshots = await _userStore.find(
+      _db,
+      finder: finder,
+    );
+
+    return recordSnapshots.map((snapshot) {
+      final user = UserTennisFieldModel.fromJson(snapshot.value);
+      return user;
+    }).toList();
   }
 }

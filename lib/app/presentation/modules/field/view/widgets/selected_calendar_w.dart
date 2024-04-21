@@ -52,7 +52,7 @@ class SelectedCalendarW extends StatelessWidget {
                   secondaryDate,
                 }) =>
                     fieldController.getMonthName(
-                  date.month - 1,
+                  date,
                 ),
                 startDay: WeekDays.sunday,
                 onEventTap: (event, date) => print(event),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../../../../core/adaptative_screen/adaptative_screen.dart';
 
@@ -8,7 +7,6 @@ import '../../../../../core/icons/tennis_app_icons.dart';
 import '../../../../../domain/models/user_tennis_field_model.dart';
 import '../../../../global/extensions/widgets_ext.dart';
 import '../../../../global/utils/custom_date.dart';
-import '../../../../router/routes/agenda_item_route.dart';
 import '../../controller/home_controller.dart';
 import '../../utils/go_agenda_item.dart';
 import 'agenda_img_w.dart';

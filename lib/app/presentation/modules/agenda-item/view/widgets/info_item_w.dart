@@ -3,18 +3,25 @@ import 'package:flutter/material.dart';
 import '../../../../../core/adaptative_screen/adaptative_screen.dart';
 import '../../../../../core/icons/tennis_app_icons.dart';
 
+import '../../../../../domain/models/user_tennis_field_model.dart';
 import '../../../../global/extensions/widgets_ext.dart';
+import '../../../../global/utils/custom_date.dart';
+import '../../controller/agenda_item_controller.dart';
 
 class InfoItemW extends StatelessWidget {
   final AdaptativeScreen adaptativeScreen;
+  final AgendaItemController agendaItemController;
 
   const InfoItemW({
     super.key,
     required this.adaptativeScreen,
+    required this.agendaItemController,
   });
 
   @override
   Widget build(BuildContext context) {
+    final UserTennisFieldModel? userTennisFieldModel =
+        agendaItemController.userTennisFieldSelected;
     return Container(
       margin: EdgeInsets.only(
         top: adaptativeScreen.bhp(60),
@@ -35,17 +42,21 @@ class InfoItemW extends StatelessWidget {
           _titleAndSubtitle(
             icon: TennisAppIcons.calendar_days_regular,
             title: 'Fecha Agendada:',
-            subTitle: 'Jueves 18 Abril, 2024 ',
+            subTitle: CustomDate.dateInfo(
+              userTennisFieldModel!.date ?? '',
+            ),
           ),
           _titleAndSubtitle(
             icon: TennisAppIcons.clock_solid,
             title: 'Hora:',
-            subTitle: '10:00AM a 15:00PM',
+            subTitle: CustomDate.timeInfo(
+              userTennisFieldModel.date ?? '',
+            ),
           ),
           _titleAndSubtitle(
             icon: TennisAppIcons.circle_user_solid,
             title: 'Reserva a nombre de:',
-            subTitle: 'Bakke Medina',
+            subTitle: userTennisFieldModel.name ?? '',
           ),
         ],
       ).padding(

@@ -10,6 +10,7 @@ import '../../../../global/extensions/widgets_ext.dart';
 import '../../../../global/utils/custom_date.dart';
 import '../../../../router/routes/agenda_item_route.dart';
 import '../../controller/home_controller.dart';
+import '../../utils/go_agenda_item.dart';
 import 'agenda_img_w.dart';
 
 class AgendaItemW extends StatelessWidget {
@@ -29,7 +30,10 @@ class AgendaItemW extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.pushNamed(AgendaItemRoute.path),
+      onTap: () => goAgendaItem(
+        context,
+        userTennisFieldModel,
+      ),
       child: Container(
         margin: EdgeInsets.symmetric(
           vertical: adaptativeScreen.bhp(0.5),

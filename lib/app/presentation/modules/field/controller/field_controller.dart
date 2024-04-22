@@ -62,7 +62,10 @@ class FieldController extends StateNotifier<FieldState> {
           response.fields,
           response.fields!.first.id!,
         ),
-        eventsOfDay: events,
+        eventsOfDay: getEventsOfDay(
+          response.fields,
+          idField,
+        ),
       ),
     );
   }
@@ -101,7 +104,10 @@ class FieldController extends StateNotifier<FieldState> {
         selectedField: selectedFd,
         color: color,
         idField: selectedFd.id ?? '1',
-        eventsOfDay: events,
+        eventsOfDay: getEventsOfDay(
+          state.fields,
+          selectedFd.id ?? '1',
+        ),
       ),
     );
   }
@@ -188,6 +194,28 @@ class FieldController extends StateNotifier<FieldState> {
     return tmp;
   }
 
+  List<CalendarEventData> getEventsOfDay(
+    List<Field>? fields,
+    String id,
+  ) {
+    List<CalendarEventData> tmp = [];
+    state.userTennisFields!.asMap().forEach((i, item) {
+      if (item.id == id &&
+          CustomDate.parteDatetime(item.date!).compareWithoutTime(dateTo!)) {
+        tmp.add(
+          CalendarEventData(
+            title: 'Reserva-$i',
+            date: CustomDate.parteDatetime(
+              item.date!,
+            ),
+            color: getFieldColor(item.path),
+          ),
+        );
+      }
+    });
+    return tmp;
+  }
+
   void onChangeEvents(String id) {
     controllerEvent!.removeAll(state.events!);
     controllerEvent!.addAll(
@@ -200,6 +228,7 @@ class FieldController extends StateNotifier<FieldState> {
             getEvents(state.fields, id),
           ),
         events: getEvents(state.fields, id),
+        eventsOfDay: getEventsOfDay(state.fields, id),
       ),
     );
   }

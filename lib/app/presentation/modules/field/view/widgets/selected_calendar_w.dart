@@ -10,6 +10,7 @@ import '../../../../global/widgets/sliver_size_box_gw.dart';
 import '../../controller/field_controller.dart';
 import 'events_days_w.dart';
 import 'selected_day_w.dart';
+import 'selected_rain_w.dart';
 
 class SelectedCalendarW extends StatelessWidget {
   final AdaptativeScreen adaptativeScreen;
@@ -72,6 +73,10 @@ class SelectedCalendarW extends StatelessWidget {
           ),
         ),
         SelectedDayW(
+          adaptativeScreen: adaptativeScreen,
+          fieldController: fieldController,
+        ),
+        SelectedRainW(
           adaptativeScreen: adaptativeScreen,
           fieldController: fieldController,
         ),

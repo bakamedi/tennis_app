@@ -1,5 +1,7 @@
 // ignore_for_file: constant_identifier_names, non_constant_identifier_names, collection_methods_unrelated_type
 
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 import 'package:calendar_view/calendar_view.dart';
@@ -33,6 +35,8 @@ class FieldController extends StateNotifier<FieldState> {
   }) : _tennisRepository = tennisRepository {
     init();
   }
+
+  String get rainProbability => state.rainProbability;
   String get idField => state.idField;
   String get btnTxt => state.btnTxt;
   String get getDateTo => CustomDate.parseDate(state.dateTo!);
@@ -82,6 +86,7 @@ class FieldController extends StateNotifier<FieldState> {
     onlyUpdate(
       state = state.copyWith(
         dateTo: dateTo ?? DateTime.now(),
+        rainProbability: _generateRandomNumber(),
       ),
     );
   }
@@ -286,10 +291,15 @@ class FieldController extends StateNotifier<FieldState> {
       id: state.selectedField!.id,
       date: state.dateTo.toString(),
       path: state.selectedField!.path,
-      rainProbability: '30',
+      rainProbability: state.rainProbability,
       name: state.reservationName,
     );
     await _tennisRepository.saveReservation(reservation);
+  }
+
+  String _generateRandomNumber() {
+    Random random = Random();
+    return '${random.nextInt(100) + 1}';
   }
 
   @override

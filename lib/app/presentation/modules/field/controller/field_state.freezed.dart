@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$FieldState {
   String get idField => throw _privateConstructorUsedError;
+  String get rainProbability => throw _privateConstructorUsedError;
   bool get fetching => throw _privateConstructorUsedError;
   DateTime? get dateTo => throw _privateConstructorUsedError;
   DateTime? get timeTo => throw _privateConstructorUsedError;
@@ -48,6 +49,7 @@ abstract class $FieldStateCopyWith<$Res> {
   @useResult
   $Res call(
       {String idField,
+      String rainProbability,
       bool fetching,
       DateTime? dateTo,
       DateTime? timeTo,
@@ -79,6 +81,7 @@ class _$FieldStateCopyWithImpl<$Res, $Val extends FieldState>
   @override
   $Res call({
     Object? idField = null,
+    Object? rainProbability = null,
     Object? fetching = null,
     Object? dateTo = freezed,
     Object? timeTo = freezed,
@@ -97,6 +100,10 @@ class _$FieldStateCopyWithImpl<$Res, $Val extends FieldState>
       idField: null == idField
           ? _value.idField
           : idField // ignore: cast_nullable_to_non_nullable
+              as String,
+      rainProbability: null == rainProbability
+          ? _value.rainProbability
+          : rainProbability // ignore: cast_nullable_to_non_nullable
               as String,
       fetching: null == fetching
           ? _value.fetching
@@ -176,6 +183,7 @@ abstract class _$$FieldStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {String idField,
+      String rainProbability,
       bool fetching,
       DateTime? dateTo,
       DateTime? timeTo,
@@ -206,6 +214,7 @@ class __$$FieldStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? idField = null,
+    Object? rainProbability = null,
     Object? fetching = null,
     Object? dateTo = freezed,
     Object? timeTo = freezed,
@@ -224,6 +233,10 @@ class __$$FieldStateImplCopyWithImpl<$Res>
       idField: null == idField
           ? _value.idField
           : idField // ignore: cast_nullable_to_non_nullable
+              as String,
+      rainProbability: null == rainProbability
+          ? _value.rainProbability
+          : rainProbability // ignore: cast_nullable_to_non_nullable
               as String,
       fetching: null == fetching
           ? _value.fetching
@@ -286,6 +299,7 @@ class __$$FieldStateImplCopyWithImpl<$Res>
 class _$FieldStateImpl extends _FieldState {
   const _$FieldStateImpl(
       {this.idField = '1',
+      this.rainProbability = '0',
       this.fetching = false,
       this.dateTo,
       this.timeTo,
@@ -308,6 +322,9 @@ class _$FieldStateImpl extends _FieldState {
   @override
   @JsonKey()
   final String idField;
+  @override
+  @JsonKey()
+  final String rainProbability;
   @override
   @JsonKey()
   final bool fetching;
@@ -373,7 +390,7 @@ class _$FieldStateImpl extends _FieldState {
 
   @override
   String toString() {
-    return 'FieldState(idField: $idField, fetching: $fetching, dateTo: $dateTo, timeTo: $timeTo, fields: $fields, selectedField: $selectedField, color: $color, controllerPage: $controllerPage, events: $events, controllerEvent: $controllerEvent, btnTxt: $btnTxt, reservationName: $reservationName, eventsOfDay: $eventsOfDay, userTennisFields: $userTennisFields)';
+    return 'FieldState(idField: $idField, rainProbability: $rainProbability, fetching: $fetching, dateTo: $dateTo, timeTo: $timeTo, fields: $fields, selectedField: $selectedField, color: $color, controllerPage: $controllerPage, events: $events, controllerEvent: $controllerEvent, btnTxt: $btnTxt, reservationName: $reservationName, eventsOfDay: $eventsOfDay, userTennisFields: $userTennisFields)';
   }
 
   @override
@@ -382,6 +399,8 @@ class _$FieldStateImpl extends _FieldState {
         (other.runtimeType == runtimeType &&
             other is _$FieldStateImpl &&
             (identical(other.idField, idField) || other.idField == idField) &&
+            (identical(other.rainProbability, rainProbability) ||
+                other.rainProbability == rainProbability) &&
             (identical(other.fetching, fetching) ||
                 other.fetching == fetching) &&
             (identical(other.dateTo, dateTo) || other.dateTo == dateTo) &&
@@ -408,6 +427,7 @@ class _$FieldStateImpl extends _FieldState {
   int get hashCode => Object.hash(
       runtimeType,
       idField,
+      rainProbability,
       fetching,
       dateTo,
       timeTo,
@@ -432,6 +452,7 @@ class _$FieldStateImpl extends _FieldState {
 abstract class _FieldState extends FieldState {
   const factory _FieldState(
       {final String idField,
+      final String rainProbability,
       final bool fetching,
       final DateTime? dateTo,
       final DateTime? timeTo,
@@ -449,6 +470,8 @@ abstract class _FieldState extends FieldState {
 
   @override
   String get idField;
+  @override
+  String get rainProbability;
   @override
   bool get fetching;
   @override

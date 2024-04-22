@@ -7,10 +7,11 @@ class EventsDaysW extends StatelessWidget {
   final AdaptativeScreen adaptativeScreen;
   final FieldController fieldController;
 
-  const EventsDaysW(
-      {super.key,
-      required this.adaptativeScreen,
-      required this.fieldController});
+  const EventsDaysW({
+    super.key,
+    required this.adaptativeScreen,
+    required this.fieldController,
+  });
 
   @override
   Widget build(BuildContext context) {

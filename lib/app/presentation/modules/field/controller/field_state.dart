@@ -13,6 +13,7 @@ class FieldState with _$FieldState {
   const FieldState._();
   const factory FieldState({
     @Default('1') String idField,
+    @Default('0') String rainProbability,
     @Default(false) bool fetching,
     DateTime? dateTo,
     DateTime? timeTo,

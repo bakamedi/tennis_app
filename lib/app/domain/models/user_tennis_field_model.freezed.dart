@@ -32,6 +32,10 @@ mixin _$UserTennisFieldModel {
   String? get path => throw _privateConstructorUsedError;
   @JsonKey(name: "name")
   String? get name => throw _privateConstructorUsedError;
+  @JsonKey(name: "time")
+  String? get time => throw _privateConstructorUsedError;
+  @JsonKey(name: "created_date")
+  String? get createdDate => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -51,7 +55,9 @@ abstract class $UserTennisFieldModelCopyWith<$Res> {
       @JsonKey(name: "rain_probability") String? rainProbability,
       @JsonKey(name: "title") String? title,
       @JsonKey(name: "path") String? path,
-      @JsonKey(name: "name") String? name});
+      @JsonKey(name: "name") String? name,
+      @JsonKey(name: "time") String? time,
+      @JsonKey(name: "created_date") String? createdDate});
 }
 
 /// @nodoc
@@ -74,6 +80,8 @@ class _$UserTennisFieldModelCopyWithImpl<$Res,
     Object? title = freezed,
     Object? path = freezed,
     Object? name = freezed,
+    Object? time = freezed,
+    Object? createdDate = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -100,6 +108,14 @@ class _$UserTennisFieldModelCopyWithImpl<$Res,
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
+      time: freezed == time
+          ? _value.time
+          : time // ignore: cast_nullable_to_non_nullable
+              as String?,
+      createdDate: freezed == createdDate
+          ? _value.createdDate
+          : createdDate // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -118,7 +134,9 @@ abstract class _$$UserTennisFieldModelImplCopyWith<$Res>
       @JsonKey(name: "rain_probability") String? rainProbability,
       @JsonKey(name: "title") String? title,
       @JsonKey(name: "path") String? path,
-      @JsonKey(name: "name") String? name});
+      @JsonKey(name: "name") String? name,
+      @JsonKey(name: "time") String? time,
+      @JsonKey(name: "created_date") String? createdDate});
 }
 
 /// @nodoc
@@ -138,6 +156,8 @@ class __$$UserTennisFieldModelImplCopyWithImpl<$Res>
     Object? title = freezed,
     Object? path = freezed,
     Object? name = freezed,
+    Object? time = freezed,
+    Object? createdDate = freezed,
   }) {
     return _then(_$UserTennisFieldModelImpl(
       id: freezed == id
@@ -164,6 +184,14 @@ class __$$UserTennisFieldModelImplCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
+      time: freezed == time
+          ? _value.time
+          : time // ignore: cast_nullable_to_non_nullable
+              as String?,
+      createdDate: freezed == createdDate
+          ? _value.createdDate
+          : createdDate // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -177,7 +205,9 @@ class _$UserTennisFieldModelImpl implements _UserTennisFieldModel {
       @JsonKey(name: "rain_probability") this.rainProbability,
       @JsonKey(name: "title") this.title,
       @JsonKey(name: "path") this.path,
-      @JsonKey(name: "name") this.name});
+      @JsonKey(name: "name") this.name,
+      @JsonKey(name: "time") this.time,
+      @JsonKey(name: "created_date") this.createdDate});
 
   factory _$UserTennisFieldModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserTennisFieldModelImplFromJson(json);
@@ -200,10 +230,16 @@ class _$UserTennisFieldModelImpl implements _UserTennisFieldModel {
   @override
   @JsonKey(name: "name")
   final String? name;
+  @override
+  @JsonKey(name: "time")
+  final String? time;
+  @override
+  @JsonKey(name: "created_date")
+  final String? createdDate;
 
   @override
   String toString() {
-    return 'UserTennisFieldModel(id: $id, date: $date, rainProbability: $rainProbability, title: $title, path: $path, name: $name)';
+    return 'UserTennisFieldModel(id: $id, date: $date, rainProbability: $rainProbability, title: $title, path: $path, name: $name, time: $time, createdDate: $createdDate)';
   }
 
   @override
@@ -217,13 +253,16 @@ class _$UserTennisFieldModelImpl implements _UserTennisFieldModel {
                 other.rainProbability == rainProbability) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.path, path) || other.path == path) &&
-            (identical(other.name, name) || other.name == name));
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.time, time) || other.time == time) &&
+            (identical(other.createdDate, createdDate) ||
+                other.createdDate == createdDate));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, date, rainProbability, title, path, name);
+  int get hashCode => Object.hash(runtimeType, id, date, rainProbability, title,
+      path, name, time, createdDate);
 
   @JsonKey(ignore: true)
   @override
@@ -243,12 +282,15 @@ class _$UserTennisFieldModelImpl implements _UserTennisFieldModel {
 
 abstract class _UserTennisFieldModel implements UserTennisFieldModel {
   const factory _UserTennisFieldModel(
-      {@JsonKey(name: "id") final String? id,
-      @JsonKey(name: "date") final String? date,
-      @JsonKey(name: "rain_probability") final String? rainProbability,
-      @JsonKey(name: "title") final String? title,
-      @JsonKey(name: "path") final String? path,
-      @JsonKey(name: "name") final String? name}) = _$UserTennisFieldModelImpl;
+          {@JsonKey(name: "id") final String? id,
+          @JsonKey(name: "date") final String? date,
+          @JsonKey(name: "rain_probability") final String? rainProbability,
+          @JsonKey(name: "title") final String? title,
+          @JsonKey(name: "path") final String? path,
+          @JsonKey(name: "name") final String? name,
+          @JsonKey(name: "time") final String? time,
+          @JsonKey(name: "created_date") final String? createdDate}) =
+      _$UserTennisFieldModelImpl;
 
   factory _UserTennisFieldModel.fromJson(Map<String, dynamic> json) =
       _$UserTennisFieldModelImpl.fromJson;
@@ -271,6 +313,12 @@ abstract class _UserTennisFieldModel implements UserTennisFieldModel {
   @override
   @JsonKey(name: "name")
   String? get name;
+  @override
+  @JsonKey(name: "time")
+  String? get time;
+  @override
+  @JsonKey(name: "created_date")
+  String? get createdDate;
   @override
   @JsonKey(ignore: true)
   _$$UserTennisFieldModelImplCopyWith<_$UserTennisFieldModelImpl>

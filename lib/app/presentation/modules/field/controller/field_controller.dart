@@ -1,5 +1,4 @@
 // ignore_for_file: constant_identifier_names, non_constant_identifier_names, collection_methods_unrelated_type
-
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -109,10 +108,6 @@ class FieldController extends StateNotifier<FieldState> {
         selectedField: selectedFd,
         color: color,
         idField: selectedFd.id ?? '1',
-        eventsOfDay: getEventsOfDay(
-          state.fields,
-          selectedFd.id ?? '1',
-        ),
       ),
     );
   }
@@ -205,8 +200,11 @@ class FieldController extends StateNotifier<FieldState> {
   ) {
     List<CalendarEventData> tmp = [];
     state.userTennisFields!.asMap().forEach((i, item) {
-      if (item.id == id &&
-          CustomDate.parteDatetime(item.date!).compareWithoutTime(dateTo!)) {
+      final compareDatesFields = CustomDate.compareDates(
+        CustomDate.parteDatetime(item.date!),
+        dateTo!,
+      );
+      if (item.id == id && compareDatesFields) {
         tmp.add(
           CalendarEventData(
             title: 'Reserva-$i',
@@ -293,6 +291,10 @@ class FieldController extends StateNotifier<FieldState> {
       path: state.selectedField!.path,
       rainProbability: state.rainProbability,
       name: state.reservationName,
+      time: CustomDate.timeInfo(
+        state.timeTo!.toString(),
+      ),
+      createdDate: DateTime.now().toString(),
     );
     await _tennisRepository.saveReservation(reservation);
   }

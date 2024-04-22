@@ -40,10 +40,10 @@ abstract class WidgetUtils {
             child,
           ],
           cancelButton: CupertinoActionSheetAction(
-            child: Text(
+            onPressed: onClicked,
+            child: const Text(
               'ok',
             ),
-            onPressed: onClicked,
           ),
         ),
       );

@@ -25,6 +25,8 @@ class UserTennisFieldModel with _$UserTennisFieldModel {
     @JsonKey(name: "title") String? title,
     @JsonKey(name: "path") String? path,
     @JsonKey(name: "name") String? name,
+    @JsonKey(name: "time") String? time,
+    @JsonKey(name: "created_date") String? createdDate,
   }) = _UserTennisFieldModel;
 
   factory UserTennisFieldModel.fromJson(Map<String, dynamic> json) =>

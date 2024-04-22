@@ -15,6 +15,8 @@ _$UserTennisFieldModelImpl _$$UserTennisFieldModelImplFromJson(
       title: json['title'] as String?,
       path: json['path'] as String?,
       name: json['name'] as String?,
+      time: json['time'] as String?,
+      createdDate: json['created_date'] as String?,
     );
 
 Map<String, dynamic> _$$UserTennisFieldModelImplToJson(
@@ -26,4 +28,6 @@ Map<String, dynamic> _$$UserTennisFieldModelImplToJson(
       'title': instance.title,
       'path': instance.path,
       'name': instance.name,
+      'time': instance.time,
+      'created_date': instance.createdDate,
     };

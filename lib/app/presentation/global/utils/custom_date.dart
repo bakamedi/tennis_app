@@ -19,7 +19,7 @@ abstract class CustomDate {
   }
 
   static DateTime parteDatetime(String dateStr) {
-    return DateTime.parse(dateStr).withoutTime;
+    return DateTime.parse(dateStr);
   }
 
   static String dateInfo(String dateString) {
@@ -63,5 +63,14 @@ abstract class CustomDate {
       default:
         return '';
     }
+  }
+
+  static bool compareDates(
+    DateTime dateTimeTo,
+    DateTime dateTimeToCompare,
+  ) {
+    return dateTimeTo.compareWithoutTime(
+      dateTimeToCompare,
+    );
   }
 }

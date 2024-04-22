@@ -9,15 +9,26 @@ void saveReservation(BuildContext context) async {
   final FieldController fieldController = fieldProvider.read();
 
   if (fieldController.controllerPage!.page!.toInt() == 1) {
-    if (fieldController.dateTo == null) {
+    final compareBefore = fieldController.dateTo!.isBefore(
+      NOW.subtract(
+        const Duration(days: 1),
+      ),
+    );
+    if (compareBefore) {
+      showSnack(
+        context,
+        fieldController,
+        content: 'La fecha seleccionada es menor a la actual',
+      );
+      return;
+    } else if (fieldController.dateTo == null) {
       showSnack(
         context,
         fieldController,
         content: 'Seleccione una fecha primero!',
       );
       return;
-    }
-    if (fieldController.validateEventsByDate()) {
+    } else if (fieldController.validateEventsByDate()) {
       showSnack(
         context,
         fieldController,
@@ -54,5 +65,7 @@ void showSnack(
       onPressed: () {},
     ),
   );
-  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  ScaffoldMessenger.of(context).showSnackBar(
+    snackBar,
+  );
 }

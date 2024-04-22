@@ -83,9 +83,7 @@ class AgendaItemW extends StatelessWidget {
                   _titleAndSubtitle(
                     icon: TennisAppIcons.clock_solid,
                     title: 'Hora:',
-                    subTitle: CustomDate.timeInfo(
-                      userTennisFieldModel.date ?? '',
-                    ),
+                    subTitle: userTennisFieldModel.time ?? '',
                   ),
                   _titleAndSubtitle(
                     icon: TennisAppIcons.circle_user_solid,

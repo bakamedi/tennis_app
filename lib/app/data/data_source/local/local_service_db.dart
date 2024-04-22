@@ -171,7 +171,7 @@ class LocalServiceDB {
 
   Future<List<UserTennisFieldModel>> getAllSortedByDate() async {
     final finder = Finder(sortOrders: [
-      SortOrder('date', false),
+      SortOrder('created_date', false),
     ]);
 
     final recordSnapshots = await _userStore.find(

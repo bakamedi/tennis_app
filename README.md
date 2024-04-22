@@ -13,7 +13,7 @@ Descripción breve del proyecto.
 1. Clona este repositorio en tu máquina local usando Git:
 
     ```bash
-    git clone https://github.com/bakamedi/yugi_app.git
+    git clone https://github.com/bakamedi/tennis_app.git
     ```
 
 2. Instala las dependencias del proyecto usando Flutter:

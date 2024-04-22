@@ -82,6 +82,7 @@ abstract class TimeButtonOptions {
     } else {
       final timeFormat = DateTime(1, 1, time.hour, time.minute);
       print(timeFormat);
+      return onPressed(timeFormat);
     }
   }
 }

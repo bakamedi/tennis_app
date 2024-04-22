@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:calendar_view/calendar_view.dart';
-import 'package:flutter/widgets.dart';
 
 import '../../../../../core/adaptative_screen/adaptative_screen.dart';
 
@@ -27,14 +26,16 @@ class SelectedCalendarW extends StatelessWidget {
       slivers: [
         SliverToBoxAdapter(
           child: SizedBox(
-            height: adaptativeScreen.height,
+            height: adaptativeScreen.height / 2,
             child: ClipRRect(
               borderRadius: const BorderRadius.all(
                 Radius.circular(10),
               ),
               child: MonthView(
                 minMonth: DateTime.now(),
-                maxMonth: DateTime(2025),
+                maxMonth: DateTime(
+                  DateTime.now().year + 1,
+                ),
                 initialMonth: DateTime.now(),
                 cellAspectRatio: 1,
                 headerStyle: const HeaderStyle(
@@ -43,10 +44,10 @@ class SelectedCalendarW extends StatelessWidget {
                     letterSpacing: 1,
                   ),
                 ),
-                onPageChange: (date, pageIndex) => print("$date, $pageIndex"),
-                onCellTap: (events, date) {
-                  print(events);
-                },
+                onCellTap: (events, date) =>
+                    fieldController.onChangeEventsOfDay(
+                  events,
+                ),
                 headerStringBuilder: (
                   date, {
                   secondaryDate,
@@ -55,8 +56,6 @@ class SelectedCalendarW extends StatelessWidget {
                   date,
                 ),
                 startDay: WeekDays.sunday,
-                onEventTap: (event, date) => print(event),
-                onDateLongPress: (date) => print(date),
               ).padding(
                 EdgeInsets.only(
                   top: adaptativeScreen.bhp(4),
@@ -67,9 +66,14 @@ class SelectedCalendarW extends StatelessWidget {
             ),
           ),
         ),
-        EventsDaysW(
-          adaptativeScreen: adaptativeScreen,
-          fieldController: fieldController,
+        SliverPadding(
+          padding: EdgeInsets.symmetric(
+            horizontal: adaptativeScreen.bwh(4),
+          ),
+          sliver: EventsDaysW(
+            adaptativeScreen: adaptativeScreen,
+            fieldController: fieldController,
+          ),
         ),
       ],
     );

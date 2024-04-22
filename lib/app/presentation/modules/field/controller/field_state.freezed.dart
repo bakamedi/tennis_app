@@ -31,6 +31,8 @@ mixin _$FieldState {
   DateTime? get selectedDate => throw _privateConstructorUsedError;
   DateTime? get selectedTime => throw _privateConstructorUsedError;
   String get reservationName => throw _privateConstructorUsedError;
+  List<CalendarEventData<Object?>>? get eventsOfDay =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $FieldStateCopyWith<FieldState> get copyWith =>
@@ -56,7 +58,8 @@ abstract class $FieldStateCopyWith<$Res> {
       String btnTxt,
       DateTime? selectedDate,
       DateTime? selectedTime,
-      String reservationName});
+      String reservationName,
+      List<CalendarEventData<Object?>>? eventsOfDay});
 
   $FieldCopyWith<$Res>? get selectedField;
 }
@@ -87,6 +90,7 @@ class _$FieldStateCopyWithImpl<$Res, $Val extends FieldState>
     Object? selectedDate = freezed,
     Object? selectedTime = freezed,
     Object? reservationName = null,
+    Object? eventsOfDay = freezed,
   }) {
     return _then(_value.copyWith(
       fetching: null == fetching
@@ -141,6 +145,10 @@ class _$FieldStateCopyWithImpl<$Res, $Val extends FieldState>
           ? _value.reservationName
           : reservationName // ignore: cast_nullable_to_non_nullable
               as String,
+      eventsOfDay: freezed == eventsOfDay
+          ? _value.eventsOfDay
+          : eventsOfDay // ignore: cast_nullable_to_non_nullable
+              as List<CalendarEventData<Object?>>?,
     ) as $Val);
   }
 
@@ -178,7 +186,8 @@ abstract class _$$FieldStateImplCopyWith<$Res>
       String btnTxt,
       DateTime? selectedDate,
       DateTime? selectedTime,
-      String reservationName});
+      String reservationName,
+      List<CalendarEventData<Object?>>? eventsOfDay});
 
   @override
   $FieldCopyWith<$Res>? get selectedField;
@@ -208,6 +217,7 @@ class __$$FieldStateImplCopyWithImpl<$Res>
     Object? selectedDate = freezed,
     Object? selectedTime = freezed,
     Object? reservationName = null,
+    Object? eventsOfDay = freezed,
   }) {
     return _then(_$FieldStateImpl(
       fetching: null == fetching
@@ -262,6 +272,10 @@ class __$$FieldStateImplCopyWithImpl<$Res>
           ? _value.reservationName
           : reservationName // ignore: cast_nullable_to_non_nullable
               as String,
+      eventsOfDay: freezed == eventsOfDay
+          ? _value._eventsOfDay
+          : eventsOfDay // ignore: cast_nullable_to_non_nullable
+              as List<CalendarEventData<Object?>>?,
     ));
   }
 }
@@ -282,9 +296,11 @@ class _$FieldStateImpl extends _FieldState {
       this.btnTxt = 'Siguiente',
       this.selectedDate,
       this.selectedTime,
-      this.reservationName = ''})
+      this.reservationName = '',
+      final List<CalendarEventData<Object?>>? eventsOfDay})
       : _fields = fields,
         _events = events,
+        _eventsOfDay = eventsOfDay,
         super._();
 
   @override
@@ -333,10 +349,19 @@ class _$FieldStateImpl extends _FieldState {
   @override
   @JsonKey()
   final String reservationName;
+  final List<CalendarEventData<Object?>>? _eventsOfDay;
+  @override
+  List<CalendarEventData<Object?>>? get eventsOfDay {
+    final value = _eventsOfDay;
+    if (value == null) return null;
+    if (_eventsOfDay is EqualUnmodifiableListView) return _eventsOfDay;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'FieldState(fetching: $fetching, dateTo: $dateTo, timeTo: $timeTo, fields: $fields, selectedField: $selectedField, color: $color, controllerPage: $controllerPage, events: $events, controllerEvent: $controllerEvent, btnTxt: $btnTxt, selectedDate: $selectedDate, selectedTime: $selectedTime, reservationName: $reservationName)';
+    return 'FieldState(fetching: $fetching, dateTo: $dateTo, timeTo: $timeTo, fields: $fields, selectedField: $selectedField, color: $color, controllerPage: $controllerPage, events: $events, controllerEvent: $controllerEvent, btnTxt: $btnTxt, selectedDate: $selectedDate, selectedTime: $selectedTime, reservationName: $reservationName, eventsOfDay: $eventsOfDay)';
   }
 
   @override
@@ -363,7 +388,9 @@ class _$FieldStateImpl extends _FieldState {
             (identical(other.selectedTime, selectedTime) ||
                 other.selectedTime == selectedTime) &&
             (identical(other.reservationName, reservationName) ||
-                other.reservationName == reservationName));
+                other.reservationName == reservationName) &&
+            const DeepCollectionEquality()
+                .equals(other._eventsOfDay, _eventsOfDay));
   }
 
   @override
@@ -381,7 +408,8 @@ class _$FieldStateImpl extends _FieldState {
       btnTxt,
       selectedDate,
       selectedTime,
-      reservationName);
+      reservationName,
+      const DeepCollectionEquality().hash(_eventsOfDay));
 
   @JsonKey(ignore: true)
   @override
@@ -404,7 +432,8 @@ abstract class _FieldState extends FieldState {
       final String btnTxt,
       final DateTime? selectedDate,
       final DateTime? selectedTime,
-      final String reservationName}) = _$FieldStateImpl;
+      final String reservationName,
+      final List<CalendarEventData<Object?>>? eventsOfDay}) = _$FieldStateImpl;
   const _FieldState._() : super._();
 
   @override
@@ -433,6 +462,8 @@ abstract class _FieldState extends FieldState {
   DateTime? get selectedTime;
   @override
   String get reservationName;
+  @override
+  List<CalendarEventData<Object?>>? get eventsOfDay;
   @override
   @JsonKey(ignore: true)
   _$$FieldStateImplCopyWith<_$FieldStateImpl> get copyWith =>

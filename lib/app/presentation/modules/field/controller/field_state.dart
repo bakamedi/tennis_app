@@ -24,6 +24,7 @@ class FieldState with _$FieldState {
     DateTime? selectedDate,
     DateTime? selectedTime,
     @Default('') String reservationName,
+    List<CalendarEventData<Object?>>? eventsOfDay,
   }) = _FieldState;
 
   static FieldState get initialState => FieldState(

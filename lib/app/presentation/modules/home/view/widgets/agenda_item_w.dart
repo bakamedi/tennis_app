@@ -27,7 +27,6 @@ class AgendaItemW extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(userTennisFieldModel.path);
     return GestureDetector(
       onTap: () => goAgendaItem(
         context,

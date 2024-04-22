@@ -14,8 +14,58 @@ class EventsDaysW extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverList.builder(
-      itemBuilder: (context, index) {},
+    final eventsOfDay = fieldController.eventsOfDay;
+    if (eventsOfDay == null) {
+      return SliverToBoxAdapter(
+        child: _myBox(
+          content: 'Escoga un día',
+        ),
+      );
+    } else if (eventsOfDay.isEmpty) {
+      return SliverToBoxAdapter(
+        child: _myBox(
+          content: 'No existen eventos para este día',
+        ),
+      );
+    } else {
+      return SliverList.builder(
+        itemCount: eventsOfDay.length,
+        itemBuilder: (context, index) {
+          final eventOfDay = eventsOfDay[index];
+          return Container(
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.all(
+                Radius.circular(10),
+              ),
+            ),
+            child: ListTile(
+              title: Text(eventOfDay.title),
+            ),
+          );
+        },
+      );
+    }
+  }
+
+  Widget _myBox({required String content}) {
+    return Container(
+      height: adaptativeScreen.bhp(10),
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.all(
+          Radius.circular(10),
+        ),
+      ),
+      child: Center(
+        child: Text(
+          content,
+          overflow: TextOverflow.ellipsis,
+          style: TextStyle(
+            fontSize: adaptativeScreen.dp(2),
+            letterSpacing: 1,
+          ),
+        ),
+      ),
     );
   }
 }

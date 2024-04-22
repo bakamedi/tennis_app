@@ -43,6 +43,7 @@ class FieldController extends StateNotifier<FieldState> {
   PageController? get controllerPage => state.controllerPage;
   List<CalendarEventData>? get events => state.events;
   EventController<Object?>? get controllerEvent => state.controllerEvent;
+  List<CalendarEventData<Object?>>? get eventsOfDay => state.eventsOfDay;
 
   void init() async {
     final response = await _tennisRepository.findAll();
@@ -163,12 +164,11 @@ class FieldController extends StateNotifier<FieldState> {
     List<CalendarEventData> tmp = [];
     for (final element in fields!) {
       if (element.id == id) {
-        for (final date in element.dates!) {
-          print(date.date!);
+        for (int i = 0; i < element.dates!.length; i++) {
           tmp.add(
             CalendarEventData(
-              title: element.name!,
-              date: CustomDate.parteDatetime(date.date!),
+              title: '${element.name}-$i-${element.dates![i]}',
+              date: CustomDate.parteDatetime(element.dates![i].date!),
               color: getFieldColor(element),
             ),
           );
@@ -179,7 +179,6 @@ class FieldController extends StateNotifier<FieldState> {
   }
 
   void onChangeEvents(String id) {
-    print(id);
     controllerEvent!.removeAll(state.events!);
     controllerEvent!.addAll(
       getEvents(state.fields, id),
@@ -207,13 +206,17 @@ class FieldController extends StateNotifier<FieldState> {
     );
   }
 
+  void onChangeEventsOfDay(
+    List<CalendarEventData<Object?>> events,
+  ) {
+    onlyUpdate(
+      state = state.copyWith(
+        eventsOfDay: events,
+      ),
+    );
+  }
+
   Future<void> reservation() async {
-    print(state.selectedField!.id);
-    print(state.selectedField!.name);
-    print(state.selectedField!.path);
-    print(state.dateTo);
-    print(state.timeTo);
-    print(state.reservationName);
     final reservation = UserTennisFieldModel(
       id: state.selectedField!.id,
       date: state.dateTo.toString(),

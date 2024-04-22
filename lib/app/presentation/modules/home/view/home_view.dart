@@ -26,7 +26,18 @@ class HomeView extends StatelessWidget {
           return CustomScrollView(
             slivers: [
               SliverSizeBoxGW(
-                height: adaptativeScreen.bhp(9),
+                height: adaptativeScreen.bhp(2),
+              ),
+              SliverAppBar(
+                centerTitle: false,
+                title: Text(
+                  'Reservaciones',
+                  style: TextStyle(
+                    fontSize: adaptativeScreen.dp(2.2),
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 1,
+                  ),
+                ),
               ),
               ReservationW(
                 adaptativeScreen: adaptativeScreen,

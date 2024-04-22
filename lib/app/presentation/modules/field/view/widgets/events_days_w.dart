@@ -33,13 +33,21 @@ class EventsDaysW extends StatelessWidget {
         itemBuilder: (context, index) {
           final eventOfDay = eventsOfDay[index];
           return Container(
+            margin: EdgeInsets.only(
+              bottom: adaptativeScreen.bhp(2),
+            ),
             decoration: const BoxDecoration(
+              color: Colors.white,
               borderRadius: BorderRadius.all(
                 Radius.circular(10),
               ),
             ),
             child: ListTile(
-              title: Text(eventOfDay.title),
+              title: Column(
+                children: [
+                  Text(eventOfDay.title),
+                ],
+              ),
             ),
           );
         },

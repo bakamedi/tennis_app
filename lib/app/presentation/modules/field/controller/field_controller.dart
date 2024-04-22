@@ -92,7 +92,7 @@ class FieldController extends StateNotifier<FieldState> {
   void onChangeColorBg(Field? selectedFd) {
     int index = int.parse(selectedField!.id!) + 1;
     onChangeEvents(index.toString());
-    final color = getFieldColor(selectedFd);
+    final color = getFieldColor(selectedFd!.path);
     onlyUpdate(
       state = state.copyWith(
         selectedField: selectedFd,
@@ -146,13 +146,13 @@ class FieldController extends StateNotifier<FieldState> {
     );
   }
 
-  Color getFieldColor(Field? selectedFd) {
+  Color getFieldColor(String? path) {
     Color color = const Color.fromARGB(255, 94, 219, 98);
-    if (selectedFd == null) {
+    if (path == null) {
       color = const Color.fromARGB(255, 110, 213, 114);
-    } else if (selectedFd.path == ImagesPath.GRASS) {
+    } else if (path == ImagesPath.GRASS) {
       color = const Color.fromARGB(255, 110, 213, 114);
-    } else if (selectedFd.path == ImagesPath.CLAY) {
+    } else if (path == ImagesPath.CLAY) {
       color = const Color.fromARGB(230, 230, 165, 132);
     } else {
       color = const Color.fromARGB(194, 47, 117, 231);
@@ -160,21 +160,39 @@ class FieldController extends StateNotifier<FieldState> {
     return color;
   }
 
-  List<CalendarEventData> getEvents(List<Field>? fields, String id) {
+  List<CalendarEventData> getEvents(
+    List<Field>? fields,
+    String id,
+  ) {
     List<CalendarEventData> tmp = [];
-    for (final element in fields!) {
-      if (element.id == id) {
-        for (int i = 0; i < element.dates!.length; i++) {
-          tmp.add(
-            CalendarEventData(
-              title: '${element.name}-$i-${element.dates![i]}',
-              date: CustomDate.parteDatetime(element.dates![i].date!),
-              color: getFieldColor(element),
+    state.userTennisFields!.asMap().forEach((i, item) {
+      if (item.id == id) {
+        tmp.add(
+          CalendarEventData(
+            title: 'Reserva-$i',
+            date: CustomDate.parteDatetime(
+              item.date!,
             ),
-          );
-        }
+            color: getFieldColor(item.path),
+          ),
+        );
       }
-    }
+    });
+    // for (final element in fields!) {
+    //   if (element.id == id) {
+    //     for (int i = 0; i < element.dates!.length; i++) {
+    //       tmp.add(
+    //         CalendarEventData(
+    //           title: 'Reserva-$i',
+    //           date: CustomDate.parteDatetime(
+    //             element.dates![i].date!,
+    //           ),
+    //           color: getFieldColor(element),
+    //         ),
+    //       );
+    //     }
+    //   }
+    // }
     return tmp;
   }
 
@@ -212,6 +230,16 @@ class FieldController extends StateNotifier<FieldState> {
     onlyUpdate(
       state = state.copyWith(
         eventsOfDay: events,
+      ),
+    );
+  }
+
+  void setUserTennisField(
+    List<UserTennisFieldModel>? userTennisFields,
+  ) {
+    onlyUpdate(
+      state = state.copyWith(
+        userTennisFields: userTennisFields,
       ),
     );
   }

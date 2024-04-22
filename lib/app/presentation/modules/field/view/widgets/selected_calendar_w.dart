@@ -58,7 +58,6 @@ class SelectedCalendarW extends StatelessWidget {
                 startDay: WeekDays.sunday,
               ).padding(
                 EdgeInsets.only(
-                  top: adaptativeScreen.bhp(4),
                   left: adaptativeScreen.bwh(3),
                   right: adaptativeScreen.bwh(3),
                 ),

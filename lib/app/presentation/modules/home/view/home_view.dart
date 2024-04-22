@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_meedu/consumer/consumer_widget.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../../../core/adaptative_screen/adaptative_screen.dart';
 import '../../../../core/icons/tennis_app_icons.dart';
 import '../../../global/widgets/sliver_size_box_gw.dart';
-import '../../../router/routes/fields_route.dart';
 
 import '../controller/home_controller.dart';
+import '../utils/go_add_agenda.dart';
 import 'widgets/reservations_w.dart';
 
 class HomeView extends StatelessWidget {
@@ -51,9 +50,7 @@ class HomeView extends StatelessWidget {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => context.pushNamed(
-          FieldsRoute.path,
-        ),
+        onPressed: () => goAddAgenda(context),
         backgroundColor: Colors.grey.shade300,
         child: const Icon(
           TennisAppIcons.calendar_plus_regular,

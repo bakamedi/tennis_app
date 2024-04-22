@@ -1,16 +1,34 @@
-# tennis_agenda_app
+# TENNIS APP
 
-A new Flutter project.
+Descripción breve del proyecto.
 
-## Getting Started
+## Instalación
 
-This project is a starting point for a Flutter application.
+### Prerrequisitos
 
-A few resources to get you started if this is your first Flutter project:
+- Tener instalado Flutter en tu sistema. Puedes encontrar instrucciones de instalación [aquí](https://flutter.dev/docs/get-started/install).
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Pasos de Instalación
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. Clona este repositorio en tu máquina local usando Git:
+
+    ```bash
+    git clone https://github.com/bakamedi/yugi_app.git
+    ```
+
+2. Instala las dependencias del proyecto usando Flutter:
+
+    ```bash
+    flutter pub get
+    ```
+
+3. Luego ejecutar el siguiente comando para generar los modelos:
+
+    ```bash
+    flutter pub run build_runner watch --delete-conflicting-outputs
+    ```
+
+
+## Licencia
+
+Este proyecto está licenciado bajo la Licencia MIT - consulta el archivo [LICENSE]

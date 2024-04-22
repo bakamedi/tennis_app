@@ -1,4 +1,4 @@
-// ignore_for_file: constant_identifier_names, non_constant_identifier_names
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names, collection_methods_unrelated_type
 
 import 'package:flutter/material.dart';
 
@@ -33,13 +33,14 @@ class FieldController extends StateNotifier<FieldState> {
   }) : _tennisRepository = tennisRepository {
     init();
   }
-
+  String get idField => state.idField;
   String get btnTxt => state.btnTxt;
   String get getDateTo => CustomDate.parseDate(state.dateTo!);
   String get getTimeTo => CustomDate.parseTime(state.timeTo!);
   List<Field>? get fields => state.fields;
   Field? get selectedField => state.selectedField;
   Color get color => state.color;
+  DateTime? get dateTo => state.dateTo;
   PageController? get controllerPage => state.controllerPage;
   List<CalendarEventData>? get events => state.events;
   EventController<Object?>? get controllerEvent => state.controllerEvent;
@@ -47,7 +48,7 @@ class FieldController extends StateNotifier<FieldState> {
 
   void init() async {
     final response = await _tennisRepository.findAll();
-    final events = getEvents(response.fields, '1');
+    final events = getEvents(response.fields, idField);
     onlyUpdate(
       state = state.copyWith(
         fields: response.fields,
@@ -61,6 +62,7 @@ class FieldController extends StateNotifier<FieldState> {
           response.fields,
           response.fields!.first.id!,
         ),
+        eventsOfDay: events,
       ),
     );
   }
@@ -93,10 +95,13 @@ class FieldController extends StateNotifier<FieldState> {
     int index = int.parse(selectedField!.id!) + 1;
     onChangeEvents(index.toString());
     final color = getFieldColor(selectedFd!.path);
+
     onlyUpdate(
       state = state.copyWith(
         selectedField: selectedFd,
         color: color,
+        idField: selectedFd.id ?? '1',
+        eventsOfDay: events,
       ),
     );
   }
@@ -142,7 +147,9 @@ class FieldController extends StateNotifier<FieldState> {
     }
 
     onlyUpdate(
-      state = state.copyWith(btnTxt: btnTxt),
+      state = state.copyWith(
+        btnTxt: btnTxt,
+      ),
     );
   }
 
@@ -178,21 +185,6 @@ class FieldController extends StateNotifier<FieldState> {
         );
       }
     });
-    // for (final element in fields!) {
-    //   if (element.id == id) {
-    //     for (int i = 0; i < element.dates!.length; i++) {
-    //       tmp.add(
-    //         CalendarEventData(
-    //           title: 'Reserva-$i',
-    //           date: CustomDate.parteDatetime(
-    //             element.dates![i].date!,
-    //           ),
-    //           color: getFieldColor(element),
-    //         ),
-    //       );
-    //     }
-    //   }
-    // }
     return tmp;
   }
 
@@ -242,6 +234,22 @@ class FieldController extends StateNotifier<FieldState> {
         userTennisFields: userTennisFields,
       ),
     );
+  }
+
+  bool validateEventsByDate() {
+    bool result = false;
+    int count = 0;
+    if (state.userTennisFields == null) {
+      return result;
+    }
+    for (final field in state.userTennisFields!) {
+      DateTime itemField = CustomDate.parteDatetime(field.date ?? '');
+
+      if (state.dateTo!.compareWithoutTime(itemField)) {
+        count++;
+      }
+    }
+    return count >= 3;
   }
 
   Future<void> reservation() async {

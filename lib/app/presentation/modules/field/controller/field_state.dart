@@ -12,6 +12,7 @@ part 'field_state.freezed.dart';
 class FieldState with _$FieldState {
   const FieldState._();
   const factory FieldState({
+    @Default('1') String idField,
     @Default(false) bool fetching,
     DateTime? dateTo,
     DateTime? timeTo,
@@ -22,8 +23,6 @@ class FieldState with _$FieldState {
     List<CalendarEventData>? events,
     EventController<Object?>? controllerEvent,
     @Default('Siguiente') String btnTxt,
-    DateTime? selectedDate,
-    DateTime? selectedTime,
     @Default('') String reservationName,
     List<CalendarEventData<Object?>>? eventsOfDay,
     List<UserTennisFieldModel>? userTennisFields,

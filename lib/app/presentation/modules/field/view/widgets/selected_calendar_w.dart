@@ -6,8 +6,10 @@ import 'package:calendar_view/calendar_view.dart';
 import '../../../../../core/adaptative_screen/adaptative_screen.dart';
 
 import '../../../../global/extensions/widgets_ext.dart';
+import '../../../../global/widgets/sliver_size_box_gw.dart';
 import '../../controller/field_controller.dart';
 import 'events_days_w.dart';
+import 'selected_day_w.dart';
 
 class SelectedCalendarW extends StatelessWidget {
   final AdaptativeScreen adaptativeScreen;
@@ -44,10 +46,14 @@ class SelectedCalendarW extends StatelessWidget {
                     letterSpacing: 1,
                   ),
                 ),
-                onCellTap: (events, date) =>
-                    fieldController.onChangeEventsOfDay(
-                  events,
-                ),
+                onCellTap: (events, date) {
+                  fieldController.onChangeDate(
+                    date,
+                  );
+                  fieldController.onChangeEventsOfDay(
+                    events,
+                  );
+                },
                 headerStringBuilder: (
                   date, {
                   secondaryDate,
@@ -65,6 +71,10 @@ class SelectedCalendarW extends StatelessWidget {
             ),
           ),
         ),
+        SelectedDayW(
+          adaptativeScreen: adaptativeScreen,
+          fieldController: fieldController,
+        ),
         SliverPadding(
           padding: EdgeInsets.symmetric(
             horizontal: adaptativeScreen.bwh(4),
@@ -73,6 +83,9 @@ class SelectedCalendarW extends StatelessWidget {
             adaptativeScreen: adaptativeScreen,
             fieldController: fieldController,
           ),
+        ),
+        SliverSizeBoxGW(
+          height: adaptativeScreen.bhp(14),
         ),
       ],
     );

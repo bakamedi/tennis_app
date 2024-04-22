@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/adaptative_screen/adaptative_screen.dart';
 import '../../../../../core/icons/tennis_app_icons.dart';
-import '../../../../global/widgets/calendar/calendar_gw.dart';
 import '../../../../global/widgets/calendar/time_gw.dart';
 import '../../../../global/widgets/input_fields/text_text_form_field.dart';
 import '../../controller/field_controller.dart';
@@ -25,22 +24,11 @@ class FieldFormW extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              CalendarGW(
-                label: fieldController.getDateTo,
-                onPressed: (date) => fieldController.onChangeDate(
-                  date,
-                ),
-              ),
-              TimeGW(
-                label: fieldController.getTimeTo,
-                onPressed: (time) => fieldController.onChangeTime(
-                  time,
-                ),
-              ),
-            ],
+          TimeGW(
+            label: fieldController.getTimeTo,
+            onPressed: (time) => fieldController.onChangeTime(
+              time,
+            ),
           ),
           Text(
             'Reserva a nombre de:',
@@ -58,10 +46,13 @@ class FieldFormW extends StatelessWidget {
             ),
             prefixIcon: const Icon(TennisAppIcons.user_regular),
             backgroundText: 'Escriba el nombre',
-          ),
+          ).padding(EdgeInsets.symmetric(
+            vertical: adaptativeScreen.bhp(1.5),
+          )),
         ],
       ).padding(
         EdgeInsets.symmetric(
+          vertical: adaptativeScreen.bhp(1.5),
           horizontal: adaptativeScreen.bwh(5),
         ),
       ),

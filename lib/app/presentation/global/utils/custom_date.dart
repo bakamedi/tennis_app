@@ -1,5 +1,6 @@
 // ignore_for_file: non_constant_identifier_names
 
+import 'package:calendar_view/calendar_view.dart';
 import 'package:intl/intl.dart';
 
 final NOW = DateTime.now();
@@ -18,7 +19,7 @@ abstract class CustomDate {
   }
 
   static DateTime parteDatetime(String dateStr) {
-    return DateTime.parse(dateStr);
+    return DateTime.parse(dateStr).withoutTime;
   }
 
   static String dateInfo(String dateString) {

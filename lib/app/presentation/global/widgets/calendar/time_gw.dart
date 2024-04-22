@@ -18,31 +18,53 @@ class TimeGW extends StatelessWidget {
   Widget build(BuildContext context) {
     final AdaptativeScreen adaptativeScreen = AdaptativeScreen.of(context);
 
-    return ElevatedButton(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Icon(
-            TennisAppIcons.clock_regular,
-          ).padding(
-            EdgeInsets.only(
-              right: adaptativeScreen.bwh(1),
-            ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Escoga el tiempo:',
+          overflow: TextOverflow.ellipsis,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: adaptativeScreen.dp(1.5),
+            fontWeight: FontWeight.bold,
+            letterSpacing: 1,
           ),
-          Text(
-            label,
-            style: TextStyle(
-              fontSize: adaptativeScreen.dp(1.3),
-              fontWeight: FontWeight.w600,
-              letterSpacing: 1,
-            ),
+        ),
+        ElevatedButton(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Icon(
+                TennisAppIcons.clock_regular,
+                color: Colors.black,
+              ).padding(
+                EdgeInsets.only(
+                  right: adaptativeScreen.bwh(1),
+                ),
+              ),
+              Text(
+                label,
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: adaptativeScreen.dp(1.3),
+                  fontWeight: FontWeight.w600,
+                  letterSpacing: 1,
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
-      onPressed: () async => TimeButtonOptions.selectTimePicker(
-        context,
-        onPressed,
-      ),
+          onPressed: () async => TimeButtonOptions.selectTimePicker(
+            context,
+            onPressed,
+          ),
+        ).padding(
+          EdgeInsets.symmetric(
+            horizontal: adaptativeScreen.bwh(4),
+            vertical: adaptativeScreen.bhp(1.5),
+          ),
+        ),
+      ],
     );
   }
 }
@@ -81,7 +103,6 @@ abstract class TimeButtonOptions {
       return onPressed(DateTime.now());
     } else {
       final timeFormat = DateTime(1, 1, time.hour, time.minute);
-      print(timeFormat);
       return onPressed(timeFormat);
     }
   }

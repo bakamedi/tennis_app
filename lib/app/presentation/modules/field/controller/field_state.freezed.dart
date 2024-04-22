@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$FieldState {
+  String get idField => throw _privateConstructorUsedError;
   bool get fetching => throw _privateConstructorUsedError;
   DateTime? get dateTo => throw _privateConstructorUsedError;
   DateTime? get timeTo => throw _privateConstructorUsedError;
@@ -28,8 +29,6 @@ mixin _$FieldState {
   EventController<Object?>? get controllerEvent =>
       throw _privateConstructorUsedError;
   String get btnTxt => throw _privateConstructorUsedError;
-  DateTime? get selectedDate => throw _privateConstructorUsedError;
-  DateTime? get selectedTime => throw _privateConstructorUsedError;
   String get reservationName => throw _privateConstructorUsedError;
   List<CalendarEventData<Object?>>? get eventsOfDay =>
       throw _privateConstructorUsedError;
@@ -48,7 +47,8 @@ abstract class $FieldStateCopyWith<$Res> {
       _$FieldStateCopyWithImpl<$Res, FieldState>;
   @useResult
   $Res call(
-      {bool fetching,
+      {String idField,
+      bool fetching,
       DateTime? dateTo,
       DateTime? timeTo,
       List<Field>? fields,
@@ -58,8 +58,6 @@ abstract class $FieldStateCopyWith<$Res> {
       List<CalendarEventData<Object?>>? events,
       EventController<Object?>? controllerEvent,
       String btnTxt,
-      DateTime? selectedDate,
-      DateTime? selectedTime,
       String reservationName,
       List<CalendarEventData<Object?>>? eventsOfDay,
       List<UserTennisFieldModel>? userTennisFields});
@@ -80,6 +78,7 @@ class _$FieldStateCopyWithImpl<$Res, $Val extends FieldState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? idField = null,
     Object? fetching = null,
     Object? dateTo = freezed,
     Object? timeTo = freezed,
@@ -90,13 +89,15 @@ class _$FieldStateCopyWithImpl<$Res, $Val extends FieldState>
     Object? events = freezed,
     Object? controllerEvent = freezed,
     Object? btnTxt = null,
-    Object? selectedDate = freezed,
-    Object? selectedTime = freezed,
     Object? reservationName = null,
     Object? eventsOfDay = freezed,
     Object? userTennisFields = freezed,
   }) {
     return _then(_value.copyWith(
+      idField: null == idField
+          ? _value.idField
+          : idField // ignore: cast_nullable_to_non_nullable
+              as String,
       fetching: null == fetching
           ? _value.fetching
           : fetching // ignore: cast_nullable_to_non_nullable
@@ -137,14 +138,6 @@ class _$FieldStateCopyWithImpl<$Res, $Val extends FieldState>
           ? _value.btnTxt
           : btnTxt // ignore: cast_nullable_to_non_nullable
               as String,
-      selectedDate: freezed == selectedDate
-          ? _value.selectedDate
-          : selectedDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      selectedTime: freezed == selectedTime
-          ? _value.selectedTime
-          : selectedTime // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
       reservationName: null == reservationName
           ? _value.reservationName
           : reservationName // ignore: cast_nullable_to_non_nullable
@@ -182,7 +175,8 @@ abstract class _$$FieldStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {bool fetching,
+      {String idField,
+      bool fetching,
       DateTime? dateTo,
       DateTime? timeTo,
       List<Field>? fields,
@@ -192,8 +186,6 @@ abstract class _$$FieldStateImplCopyWith<$Res>
       List<CalendarEventData<Object?>>? events,
       EventController<Object?>? controllerEvent,
       String btnTxt,
-      DateTime? selectedDate,
-      DateTime? selectedTime,
       String reservationName,
       List<CalendarEventData<Object?>>? eventsOfDay,
       List<UserTennisFieldModel>? userTennisFields});
@@ -213,6 +205,7 @@ class __$$FieldStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? idField = null,
     Object? fetching = null,
     Object? dateTo = freezed,
     Object? timeTo = freezed,
@@ -223,13 +216,15 @@ class __$$FieldStateImplCopyWithImpl<$Res>
     Object? events = freezed,
     Object? controllerEvent = freezed,
     Object? btnTxt = null,
-    Object? selectedDate = freezed,
-    Object? selectedTime = freezed,
     Object? reservationName = null,
     Object? eventsOfDay = freezed,
     Object? userTennisFields = freezed,
   }) {
     return _then(_$FieldStateImpl(
+      idField: null == idField
+          ? _value.idField
+          : idField // ignore: cast_nullable_to_non_nullable
+              as String,
       fetching: null == fetching
           ? _value.fetching
           : fetching // ignore: cast_nullable_to_non_nullable
@@ -270,14 +265,6 @@ class __$$FieldStateImplCopyWithImpl<$Res>
           ? _value.btnTxt
           : btnTxt // ignore: cast_nullable_to_non_nullable
               as String,
-      selectedDate: freezed == selectedDate
-          ? _value.selectedDate
-          : selectedDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      selectedTime: freezed == selectedTime
-          ? _value.selectedTime
-          : selectedTime // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
       reservationName: null == reservationName
           ? _value.reservationName
           : reservationName // ignore: cast_nullable_to_non_nullable
@@ -298,7 +285,8 @@ class __$$FieldStateImplCopyWithImpl<$Res>
 
 class _$FieldStateImpl extends _FieldState {
   const _$FieldStateImpl(
-      {this.fetching = false,
+      {this.idField = '1',
+      this.fetching = false,
       this.dateTo,
       this.timeTo,
       final List<Field>? fields,
@@ -308,8 +296,6 @@ class _$FieldStateImpl extends _FieldState {
       final List<CalendarEventData<Object?>>? events,
       this.controllerEvent,
       this.btnTxt = 'Siguiente',
-      this.selectedDate,
-      this.selectedTime,
       this.reservationName = '',
       final List<CalendarEventData<Object?>>? eventsOfDay,
       final List<UserTennisFieldModel>? userTennisFields})
@@ -319,6 +305,9 @@ class _$FieldStateImpl extends _FieldState {
         _userTennisFields = userTennisFields,
         super._();
 
+  @override
+  @JsonKey()
+  final String idField;
   @override
   @JsonKey()
   final bool fetching;
@@ -359,10 +348,6 @@ class _$FieldStateImpl extends _FieldState {
   @JsonKey()
   final String btnTxt;
   @override
-  final DateTime? selectedDate;
-  @override
-  final DateTime? selectedTime;
-  @override
   @JsonKey()
   final String reservationName;
   final List<CalendarEventData<Object?>>? _eventsOfDay;
@@ -388,7 +373,7 @@ class _$FieldStateImpl extends _FieldState {
 
   @override
   String toString() {
-    return 'FieldState(fetching: $fetching, dateTo: $dateTo, timeTo: $timeTo, fields: $fields, selectedField: $selectedField, color: $color, controllerPage: $controllerPage, events: $events, controllerEvent: $controllerEvent, btnTxt: $btnTxt, selectedDate: $selectedDate, selectedTime: $selectedTime, reservationName: $reservationName, eventsOfDay: $eventsOfDay, userTennisFields: $userTennisFields)';
+    return 'FieldState(idField: $idField, fetching: $fetching, dateTo: $dateTo, timeTo: $timeTo, fields: $fields, selectedField: $selectedField, color: $color, controllerPage: $controllerPage, events: $events, controllerEvent: $controllerEvent, btnTxt: $btnTxt, reservationName: $reservationName, eventsOfDay: $eventsOfDay, userTennisFields: $userTennisFields)';
   }
 
   @override
@@ -396,6 +381,7 @@ class _$FieldStateImpl extends _FieldState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$FieldStateImpl &&
+            (identical(other.idField, idField) || other.idField == idField) &&
             (identical(other.fetching, fetching) ||
                 other.fetching == fetching) &&
             (identical(other.dateTo, dateTo) || other.dateTo == dateTo) &&
@@ -410,10 +396,6 @@ class _$FieldStateImpl extends _FieldState {
             (identical(other.controllerEvent, controllerEvent) ||
                 other.controllerEvent == controllerEvent) &&
             (identical(other.btnTxt, btnTxt) || other.btnTxt == btnTxt) &&
-            (identical(other.selectedDate, selectedDate) ||
-                other.selectedDate == selectedDate) &&
-            (identical(other.selectedTime, selectedTime) ||
-                other.selectedTime == selectedTime) &&
             (identical(other.reservationName, reservationName) ||
                 other.reservationName == reservationName) &&
             const DeepCollectionEquality()
@@ -425,6 +407,7 @@ class _$FieldStateImpl extends _FieldState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      idField,
       fetching,
       dateTo,
       timeTo,
@@ -435,8 +418,6 @@ class _$FieldStateImpl extends _FieldState {
       const DeepCollectionEquality().hash(_events),
       controllerEvent,
       btnTxt,
-      selectedDate,
-      selectedTime,
       reservationName,
       const DeepCollectionEquality().hash(_eventsOfDay),
       const DeepCollectionEquality().hash(_userTennisFields));
@@ -450,7 +431,8 @@ class _$FieldStateImpl extends _FieldState {
 
 abstract class _FieldState extends FieldState {
   const factory _FieldState(
-      {final bool fetching,
+      {final String idField,
+      final bool fetching,
       final DateTime? dateTo,
       final DateTime? timeTo,
       final List<Field>? fields,
@@ -460,13 +442,13 @@ abstract class _FieldState extends FieldState {
       final List<CalendarEventData<Object?>>? events,
       final EventController<Object?>? controllerEvent,
       final String btnTxt,
-      final DateTime? selectedDate,
-      final DateTime? selectedTime,
       final String reservationName,
       final List<CalendarEventData<Object?>>? eventsOfDay,
       final List<UserTennisFieldModel>? userTennisFields}) = _$FieldStateImpl;
   const _FieldState._() : super._();
 
+  @override
+  String get idField;
   @override
   bool get fetching;
   @override
@@ -487,10 +469,6 @@ abstract class _FieldState extends FieldState {
   EventController<Object?>? get controllerEvent;
   @override
   String get btnTxt;
-  @override
-  DateTime? get selectedDate;
-  @override
-  DateTime? get selectedTime;
   @override
   String get reservationName;
   @override

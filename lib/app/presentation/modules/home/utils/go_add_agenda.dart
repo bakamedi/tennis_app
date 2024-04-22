@@ -1,3 +1,4 @@
+import 'package:calendar_view/calendar_view.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -11,6 +12,10 @@ void goAddAgenda(BuildContext context) {
   fieldController.setUserTennisField(
     homeController.userTennisFields,
   );
+  fieldController.onChangeDate(
+    DateTime.now().withoutTime,
+  );
+
   context.pushNamed(
     FieldsRoute.path,
   );
